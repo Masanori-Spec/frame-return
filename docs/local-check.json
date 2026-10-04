@@ -1,7 +1,7 @@
 {
   "schema": "frame-return-local-check/v1",
   "date": "2026-10-04",
-  "status": "passed-local-localization-followup-hosted-rerun-pending",
+  "status": "passed-local-and-recorded-hosted",
   "environment": {
     "node": "v24.19.0",
     "python": "Python 3.12.14",
@@ -20,13 +20,6 @@
     "pendingInputSnapshotRegressions": 6,
     "localizationRegressionGroups": 2
   },
-  "unrun": [
-    "Sandboxed Chromium UI workflow and visual screenshots",
-    "Pinned Scribus native fixture generation",
-    "Actual browser download reopen in fresh Scribus",
-    "Native text/character+paragraph styles/geometry/image/overflow readback",
-    "Native PDF export, rasterization and visual inspection"
-  ],
   "publication": "not performed",
   "nativeInstallationOrLaunchLocal": "not performed",
   "browserLaunchLocal": "not performed",
@@ -51,15 +44,23 @@
   },
   "independentSourceReview": "incomplete",
   "reportedFunctionalRepair": "Detach caller-owned data before async digest; apply the validated snapshot; recheck output run text and eligibility",
-  "hostedBaseline": {
-    "commit": "e4628478bf4ccbba9ccbbfee198c1dbc0683bff5",
-    "run": "https://github.com/Masanori-Spec/frame-return/actions/runs/37220146519",
+  "hostedVerification": {
+    "commit": "09a08b05e2b5b1e50897763d895473f253ecb357",
+    "run": "https://github.com/Masanori-Spec/frame-return/actions/runs/37220860607",
     "jobs": 5,
-    "nodeGroups": 53,
+    "nodeGroups": 55,
     "oracleTests": 42,
     "harnessTests": 11,
     "browserCases": 16,
     "nativeShortAndLong": "passed",
-    "followupRevision": "rerun pending"
-  }
+    "browserScreenshotsInspected": 8,
+    "nativePdfRastersInspected": 3
+  },
+  "notRunLocally": [
+    "Sandboxed Chromium UI workflow and visual screenshots",
+    "Pinned Scribus native fixture generation",
+    "Actual browser download reopen in fresh Scribus",
+    "Native text/character+paragraph styles/geometry/image/overflow readback",
+    "Native PDF export, rasterization and visual inspection"
+  ]
 }

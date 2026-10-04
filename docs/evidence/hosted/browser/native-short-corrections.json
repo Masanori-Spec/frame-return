@@ -1,0 +1,48 @@
+{
+  "format": "frame-return/corrections",
+  "version": 1,
+  "packet": {
+    "format": "frame-return/review",
+    "version": 1,
+    "source": {
+      "name": "baseline.sla",
+      "sha256": "89cd14e6788fcc41bd7d776193651ef5cc13ff2bac11e8e319c5e0aa59ae13e4",
+      "scribusVersion": "1.6.1"
+    },
+    "frames": [
+      {
+        "name": "headline",
+        "page": 1,
+        "wrapper": "StoryText",
+        "skeleton": [
+          "ITEXT",
+          "ITEXT",
+          "trail"
+        ],
+        "runs": [
+          {
+            "paragraph": 0,
+            "run": 0,
+            "text": "Open "
+          },
+          {
+            "paragraph": 0,
+            "run": 1,
+            "text": "studio"
+          }
+        ],
+        "text": "Open studio"
+      }
+    ],
+    "id": "12a6d767782e91283d3b66a69db1f25b50da36cdd68b7b538dbc1952d20ecd62"
+  },
+  "returns": [
+    {
+      "name": "headline",
+      "values": [
+        "Community ",
+        "studio"
+      ]
+    }
+  ]
+}

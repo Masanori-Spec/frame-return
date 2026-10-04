@@ -20,6 +20,6 @@ This is useful only if the real consumer gate passes. An XML-only demonstration 
 
 ## Identity and serialization finding
 
-Scribus's [serialization source](https://raw.githubusercontent.com/scribusproject/scribus/master/scribus/plugins/fileloader/scribus150format/scribus150format_save.cpp) derives ItemID from an in-memory item hash. ItemID is not used as a persistent document identity. The exact1.6.1 source archive and Scripter APIs are recorded in [native sources](../tools/native/SOURCES.md).
+Scribus's [serialization source](https://raw.githubusercontent.com/scribusproject/scribus/master/scribus/plugins/fileloader/scribus150format/scribus150format_save.cpp) derives ItemID from an in-memory item hash. ItemID is not used as a persistent document identity. The exact 1.6.1 source archive and Scripter APIs are recorded in [native sources](../tools/native/SOURCES.md).
 
 No university sites were used. No customer contact, product purchase, permissions expansion or patent-candidate publication was performed for this build.

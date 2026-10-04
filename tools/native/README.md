@@ -24,21 +24,21 @@ are recorded in each report, not claimed to be a fully reproducible OS image.
 
 ## Observed hosted execution
 
-All five jobs passed at commit `e4628478bf4ccbba9ccbbfee198c1dbc0683bff5` in
-[run37220146519](https://github.com/Masanori-Spec/frame-return/actions/runs/37220146519).
-That run included53 Node groups on22/24,42 oracle regressions,11 harness tests,
-16 sandboxed browser cases, both actual-download native reopen checks and inspected
-PDF rasters. Independent source review remains incomplete. The subsequent targeted
-Japanese/mobile UI changes await their own hosted rerun; this recorded pass applies
-to the cited commit.
+All five jobs passed at commit `09a08b05e2b5b1e50897763d895473f253ecb357` in
+[run 37220860607](https://github.com/Masanori-Spec/frame-return/actions/runs/37220860607).
+That run included 55 Node groups on Node 22 and 24, 42 oracle regressions, 11 harness
+tests, 16 sandboxed browser cases and both actual-download native reopen checks.
+All eight browser screenshots and three native PDF rasters were inspected.
+Independent source review remains incomplete. The recorded pass applies to the
+cited commit and the tested file hashes in the [evidence snapshot](../../docs/evidence/hosted/README.md).
 
 The five-job workflow contains two Node matrix jobs and three dependent consumer
-stages: native generation on Ubuntu24.04, sandboxed browser on Ubuntu22.04, then
-native reopening on Ubuntu24.04. Artifact transfer preserves `test-results/native`
+stages: native generation on Ubuntu 24.04, sandboxed browser on Ubuntu 22.04, then
+native reopening on Ubuntu 24.04. Artifact transfer preserves `test-results/native`
 with baseline/current files, relative assets and actual browser downloads. The
 native pin remains unchanged. No system security setting or sandbox bypass is
-used. See [verification record](../../docs/VERIFICATION.md) for exact evidence and
-consumer boundaries.
+used. See the [verification record](../../docs/VERIFICATION.md) for exact evidence
+and consumer boundaries.
 
 ## Integration contract for the workflow and browser test
 
@@ -94,7 +94,7 @@ All coordinates use points. Four uniquely named top-level objects are generated:
 
 Text frames are ordinary, unlinked text. The headline has two named character
 styles: `HeadlinePrimary` (bold, Ink) and `HeadlineSecondary` (Book, accent).
-Both named definitions are redefined from 20pt to 24pt in current; the second
+Both named definitions are redefined from 20 pt to 24 pt in current; the second
 definition also changes from AccentBaseline to AccentCurrent. Native resolved
 character styles and the serialized `CHARSTYLE` definitions are both checked.
 
@@ -107,7 +107,7 @@ left untouched, and their SHA-256 hashes bind all checks to that run's fixtures.
 
 - Real native save, correct 1.6.1 `StoryText` serialization, exactly two headline
   ITEXT runs with the expected named-style parents
-- Current named style definitions differ from baseline, use 24pt and current
+- Current named style definitions differ from baseline, use 24 pt and current
   accent; current native geometry is x=80, width=260
 - Returned XML differs from current only in authorized headline `CH`; named
   styles, all run style attributes, scaling, frame geometry, unrelated objects

@@ -1,0 +1,243 @@
+{
+  "schema": "frame-return-hosted-verification/v1",
+  "runUrl": "https://github.com/Masanori-Spec/frame-return/actions/runs/37220860607",
+  "runId": "37220860607",
+  "testedCommit": "09a08b05e2b5b1e50897763d895473f253ecb357",
+  "observedDate": "2026-10-04",
+  "jobs": {
+    "total": 5,
+    "passed": 5
+  },
+  "checks": {
+    "node22Groups": 55,
+    "node24Groups": 55,
+    "oracleRegressionTests": 42,
+    "harnessNonNativeTests": 11,
+    "browserCases": 16,
+    "browserGate": "passed",
+    "nativeShortGate": "passed",
+    "nativeLongGate": "passed"
+  },
+  "visualInspection": {
+    "browserScreenshots": 8,
+    "nativePdfRasters": 3,
+    "observed": "Japanese notices/conflicts translated; reset single-line; no clipping or overlap found. Native short fits and long overflows without shrinking."
+  },
+  "nativeVersion": "1.6.1",
+  "nativePackage": "1.6.1-0ubuntu7",
+  "browserSandbox": true,
+  "independentSourceReview": "incomplete",
+  "scope": "Recorded functional/native evidence for the cited commit and tested file hashes. Does not constitute an independent source review or support other native versions.",
+  "testedApplicationFilesSha256": {
+    ".github/workflows/verify.yml": "9cc85e38f4dd3c14c20a6ef60e6fe346ef4516f5fb1863116913bd9812895743",
+    "dist/index.html": "9a95cbc32e265261ff792c5ef163bfbcc477c81b58c4bd990d9a0246374175eb",
+    "package-lock.json": "a21c44a95554e3b4e4b112326083a71a847334a7d24798bf00bd587c2d0c1555",
+    "package.json": "53008f08b7100c6520b3017c6e84fe715733cd053e37eaa36dd9ca4429e0d08b",
+    "requirements.txt": "f1f44f89416e7268227b6bc6950557705f72e385af6f99a073d4eec99cc28864",
+    "scripts/build.mjs": "f92804ed3a445c3c2db0c3d0cd70ee355758be3ee861736f22ed3d8e5b1342ed",
+    "scripts/check-oracle.py": "5f5beda8491aa601fccace54f7a0502bf19bba83e05492443b66e5a986e404b5",
+    "scripts/export-example.mjs": "4b5098b96c6ed000c89ec90824e3a8b402ab639152c07380a76c56be697b3a43",
+    "scripts/serve.mjs": "48ef65c52d372ba5473e5e9e4522fb84c18cb79076ebf169e960d9c70e5f88bf",
+    "src/core.mjs": "49979e1bd4b8839f37a0beff0a69bbc473bce24c8c3e35a67019b22bf8bfa62e",
+    "src/fixture.mjs": "d8fe11f4c3fb397d7023f91532cda76cfa14e4422f64ecac80c6a55ce0057dae",
+    "src/xml.mjs": "376ef44277103920b8c7b24dbb76e32bee05ba33bfcd71ec57305353115098f8",
+    "tests/async-inputs.test.mjs": "d0cd2f87b842dfd1b4e74354fb46bface77e492fcd74316cc4e8723dcd5e20c0",
+    "tests/browser-test.mjs": "8d0fe7732a36624b5cb683ea667f9099a5fd836f3791f49acebb7b30cf0ed3fd",
+    "tests/core.test.mjs": "d5212eb25f9030a4a8cfb0e22403e8682c3e6ff660256c4ecab527353b77c354",
+    "tests/localization.test.mjs": "b9bc692b941a553eb00674d5a6178245a1f6fec969732cf05704aa139365dd7b",
+    "tests/oracle.test.py": "d74abb5338cecd3d7b40e1458a4f95767ab238786528d2e1e2eaeb7636e8b0f7",
+    "tests/static.test.mjs": "4021f3ad6a50f0ffbf9f7bb4644e9c273ea5963e573bdc91519ba74f731801c5",
+    "tools/native/contract.py": "85815605508523f534e8d18a506e74442ff13199c07188897c134d0255f09052",
+    "tools/native/harness.py": "2515ddd2b78e8bc4af685aab3247974d94e2b0acdde43a3a89980b5dfdc5f17a",
+    "tools/native/install-ci.sh": "4ad62252e137a3b2c56fc84630d426ee20c6ab9960c0c12d042e780587045954",
+    "tools/native/scribus_worker.py": "2f0f2a0d7c33b53be31f3ec6b66c4d98596abfb7810e50b26b6d956327703cb9",
+    "tools/native/test_harness.py": "45f9f13c4f62f837a6bb8411a462db152a21df70b91273d39c1824764e9342c2",
+    "tools/oracle.py": "2fde5de1269c983a499939dff717ddb4291ca3a6a41048eba0a948dcd2e482f3",
+    "web/app.js": "5c2a6e3c333de1d828b0d7625907299422c7bea884f53b4c45b90320e75d9a99",
+    "web/index.html": "1196bf246ad0bc099dc46caf7d787cbfdf865751562061f513e63f59ef8cfb97",
+    "web/messages.mjs": "7fafa769010f05382f536dba1291b05f495d9c603b658d0120fb334f0a9e0782",
+    "web/styles.css": "c5c66e2d4a33e12a27ceed737a9d942e917aedf908608216ea84474dae1627a0"
+  },
+  "files": [
+    {
+      "path": "browser/01-ja-empty.png",
+      "bytes": 136112,
+      "sha256": "6eb240b7d16e962fa006f99ac639d58d1796df28c739bd60e45c1cd45b62da3e"
+    },
+    {
+      "path": "browser/02-en-selection.png",
+      "bytes": 129332,
+      "sha256": "c4675e96a31456f8cc421004d6e8e8b70e4b336e54ae84ea5f2a9b85bf5f1315"
+    },
+    {
+      "path": "browser/03-en-review.png",
+      "bytes": 122606,
+      "sha256": "394f5b4bd45ac058d57e919c4cfa17707211ed6de560d0a566de324aa22e7a72"
+    },
+    {
+      "path": "browser/04-en-applied.png",
+      "bytes": 159241,
+      "sha256": "e2a961474d9ac570207f9c887facedc1e48620787255c057a9b53dfc7aecee7c"
+    },
+    {
+      "path": "browser/05-en-conflict.png",
+      "bytes": 151899,
+      "sha256": "045ca949f68d966acf57894c6f734ec65ed7ee93dc68c7a91bb16b3d0553c317"
+    },
+    {
+      "path": "browser/06-ja-mobile-review.png",
+      "bytes": 115198,
+      "sha256": "f1421361c77dde315b62c86d4ba88f88e9465642243ff30fd2c91cf3d0542fa0"
+    },
+    {
+      "path": "browser/07-ja-mobile-conflict.png",
+      "bytes": 137069,
+      "sha256": "a133992c39bb701ef88da4321ed6fd07d20f159e7bd214989ec6c8ef17c8bec3"
+    },
+    {
+      "path": "browser/08-native-return.png",
+      "bytes": 159211,
+      "sha256": "582c2c0a03535fd6995172f58372e721506a2353caf44bac65c579561a1ebd14"
+    },
+    {
+      "path": "browser/browser-command.json",
+      "bytes": 1931,
+      "sha256": "d9faa368a112a31ab42e9acce87517f90d629e05299f50e54d8599bc7ba30d86"
+    },
+    {
+      "path": "browser/native-long-corrections.json",
+      "bytes": 1964,
+      "sha256": "18cc7962a190e6c5be32ed420c73ffa2fa105085ebe32a0ce430f16caef07dc5"
+    },
+    {
+      "path": "browser/native-long-review.json",
+      "bytes": 711,
+      "sha256": "50eda3075a574e4bbf3a44011229beb1bbe9f6e605ab16245d0bedbcdb8ba58f"
+    },
+    {
+      "path": "browser/native-short-corrections.json",
+      "bytes": 974,
+      "sha256": "cc9e684ab1d8ca6f730c5a42c252aa99b27408ca7231fb0f1d4d4a1107987877"
+    },
+    {
+      "path": "browser/native-short-review.json",
+      "bytes": 711,
+      "sha256": "50eda3075a574e4bbf3a44011229beb1bbe9f6e605ab16245d0bedbcdb8ba58f"
+    },
+    {
+      "path": "browser/noop-oracle.json",
+      "bytes": 563,
+      "sha256": "3bbcb265d4ca837428a9303e8f17b05997e083171ba7d4418aeecfce41a702ec"
+    },
+    {
+      "path": "browser/report.json",
+      "bytes": 2555,
+      "sha256": "0ad340df7180b05ad98ae44bb4a663aa6b94c204dea8e1601fb6093ac87ffc4d"
+    },
+    {
+      "path": "browser/short-oracle.json",
+      "bytes": 564,
+      "sha256": "1d44d320d4cb293a31662a0447aef791e5c669e886cc5ee279c6041469d75a96"
+    },
+    {
+      "path": "native/assets/checker.png",
+      "bytes": 239,
+      "sha256": "b7427b6b0f6426b96a32572fc0f632691c0d09ba7685e4e4fba8977a97f2a51f"
+    },
+    {
+      "path": "native/baseline.sla",
+      "bytes": 17993,
+      "sha256": "89cd14e6788fcc41bd7d776193651ef5cc13ff2bac11e8e319c5e0aa59ae13e4"
+    },
+    {
+      "path": "native/check-long.json",
+      "bytes": 4891,
+      "sha256": "729a17a3a9d08eb811e7c45c0d8f82989ffe35a58be6966be43506669c96f5b9"
+    },
+    {
+      "path": "native/check-short.json",
+      "bytes": 3902,
+      "sha256": "3ecc87beea5921c02ca4d005cc04a8db0fc50536ba6d147aa2a3b69407899dd2"
+    },
+    {
+      "path": "native/current-page.png",
+      "bytes": 35983,
+      "sha256": "682d71fe617ca2e93fa37c7bcca8fcf2a348926e452efbfe6c714acf93ac25dd"
+    },
+    {
+      "path": "native/current.pdf",
+      "bytes": 25705,
+      "sha256": "adb3f498140776f1a8fe1ac2257faf4b9586b9ef1e5c97105d815d580743f8ef"
+    },
+    {
+      "path": "native/current.sla",
+      "bytes": 17875,
+      "sha256": "de3cff2f1cee61e1eaf487bb823fc62fa5ba2c90aafea079130c02a5a65f6b8d"
+    },
+    {
+      "path": "native/expected-long.json",
+      "bytes": 1070,
+      "sha256": "29d2d17d376d5bc6327d6b82c4f6adc6fbb0dd91d6c62f56a506b7b6cc9d1c97"
+    },
+    {
+      "path": "native/expected-short.json",
+      "bytes": 80,
+      "sha256": "5304ea77d88d7b7cd313c90ada3a9fcf84f7a90fe6636be928ea58a62be0c0bc"
+    },
+    {
+      "path": "native/long-oracle.json",
+      "bytes": 566,
+      "sha256": "f5e165e2d3910e62094987a122897762efa8fd52ee97572388f83b444c9da68e"
+    },
+    {
+      "path": "native/manifest.json",
+      "bytes": 10255,
+      "sha256": "d0c115f5fcf1ff795430411f0b5ebe862b888fafa5b93efee5adc77ffe0c139b"
+    },
+    {
+      "path": "native/returned-long-page.png",
+      "bytes": 34170,
+      "sha256": "3ce34dcb197171ea606258c72256b9c2052544a6051fd382e16b603177e457aa"
+    },
+    {
+      "path": "native/returned-long-receipt.json",
+      "bytes": 881,
+      "sha256": "3772565d14261938fcc930009f2a278fe413bb9bfd7b6dd7b2b4f3e41a123e6f"
+    },
+    {
+      "path": "native/returned-long.pdf",
+      "bytes": 26438,
+      "sha256": "1e4ec309683a15db840c937115a26dd45091f7a08bcfbcc32074d9be2fcbee51"
+    },
+    {
+      "path": "native/returned-long.sla",
+      "bytes": 18870,
+      "sha256": "494c30e2ee6186a34af8c896b3a4b201b2fd408bbcbe7008ef2b5262b69c1ca0"
+    },
+    {
+      "path": "native/returned-short-page.png",
+      "bytes": 36960,
+      "sha256": "3d4edc2b88cb06073f2e225a10e4b3d9aba3c2c3c0d22b527f3027df36cb32a3"
+    },
+    {
+      "path": "native/returned-short-receipt.json",
+      "bytes": 881,
+      "sha256": "38c5b4fc4c6ec2707462f8b57b68bfc77cae6c1582ba02614c244a2ac7a5c125"
+    },
+    {
+      "path": "native/returned-short.pdf",
+      "bytes": 26498,
+      "sha256": "0a5f2b8d3a1baeb2bdc255800ef46e2b5a7fb68d7c9f1bc34ab4d8ac3bfb7c3d"
+    },
+    {
+      "path": "native/returned-short.sla",
+      "bytes": 17880,
+      "sha256": "674d0cf4186f7f6094f884c44ee04b12f38af43131a54e043f93aaf18f1f4943"
+    },
+    {
+      "path": "native/short-oracle.json",
+      "bytes": 566,
+      "sha256": "3d587b64f1d66590dca4289714524a55ae48feb842930089ecda68647e852cba"
+    }
+  ]
+}

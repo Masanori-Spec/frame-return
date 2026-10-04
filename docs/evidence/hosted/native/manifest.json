@@ -1,0 +1,338 @@
+{
+  "schema": "frame-return-native-contract/v1",
+  "scribusVersion": "1.6.1",
+  "scribusPackage": "1.6.1-0ubuntu7",
+  "baseline": "baseline.sla",
+  "current": "current.sla",
+  "frame": "headline",
+  "baselineRuns": [
+    "Open ",
+    "studio"
+  ],
+  "cases": {
+    "short": {
+      "runs": [
+        "Community ",
+        "studio"
+      ],
+      "text": "Community studio",
+      "overflow": false
+    },
+    "long": {
+      "runs": [
+        "Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community ",
+        "studio"
+      ],
+      "text": "Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community studio",
+      "overflow": true
+    }
+  },
+  "baselineGeometry": [
+    40,
+    48,
+    200,
+    48
+  ],
+  "currentGeometry": [
+    80,
+    48,
+    260,
+    48
+  ],
+  "baselineSidebar": "18:00",
+  "currentSidebar": "18:30",
+  "unchangedCaption": "Open studio: unchanged words in a separate native text frame.",
+  "asset": "assets/checker.png",
+  "namedStyles": [
+    "HeadlinePrimary",
+    "HeadlineSecondary"
+  ],
+  "fontNames": [
+    "DejaVu Sans Bold",
+    "DejaVu Sans Book"
+  ],
+  "environment": {
+    "packages": {
+      "fonts-dejavu-core": "2.37-8",
+      "poppler-utils": "24.02.0-1ubuntu9.9",
+      "scribus": "1.6.1-0ubuntu7",
+      "scribus-data": "1.6.1-0ubuntu7",
+      "xauth": "1:1.1.2-1build1",
+      "xvfb": "2:21.1.12-1ubuntu1.8"
+    },
+    "githubRunId": "37220860607",
+    "githubSha": "09a08b05e2b5b1e50897763d895473f253ecb357",
+    "runnerImage": "20260927.320.1"
+  },
+  "native": {
+    "ok": true,
+    "nonce": "05dc01261cad462a949b7207806e44d9",
+    "mode": "generate",
+    "scribusVersion": "1.6.1",
+    "baseline": {
+      "headline": {
+        "text": "Open studio",
+        "geometry": [
+          40.0,
+          48.0,
+          200.0,
+          48.0
+        ],
+        "type": "TextFrame",
+        "previous": null,
+        "next": null,
+        "overflow": false,
+        "styleRuns": [
+          {
+            "start": 0,
+            "length": 5,
+            "style": {
+              "font": "DejaVu Sans Bold",
+              "size": 20.0,
+              "color": "Ink",
+              "namedStyle": "HeadlinePrimary",
+              "paragraphStyle": null
+            }
+          },
+          {
+            "start": 5,
+            "length": 6,
+            "style": {
+              "font": "DejaVu Sans Book",
+              "size": 20.0,
+              "color": "AccentBaseline",
+              "namedStyle": "HeadlineSecondary",
+              "paragraphStyle": null
+            }
+          }
+        ]
+      },
+      "sidebar": {
+        "text": "18:00",
+        "geometry": [
+          370.0,
+          48.0,
+          90.0,
+          44.0
+        ],
+        "type": "TextFrame",
+        "previous": null,
+        "next": null,
+        "overflow": false,
+        "styleRuns": [
+          {
+            "start": 0,
+            "length": 5,
+            "style": {
+              "font": "DejaVu Sans Book",
+              "size": 18.0,
+              "color": "Ink",
+              "namedStyle": null,
+              "paragraphStyle": null
+            }
+          }
+        ]
+      },
+      "caption": {
+        "text": "Open studio: unchanged words in a separate native text frame.",
+        "geometry": [
+          40.0,
+          275.0,
+          420.0,
+          35.0
+        ],
+        "type": "TextFrame",
+        "previous": null,
+        "next": null,
+        "overflow": false,
+        "styleRuns": [
+          {
+            "start": 0,
+            "length": 61,
+            "style": {
+              "font": "DejaVu Sans Book",
+              "size": 11.0,
+              "color": "Ink",
+              "namedStyle": null,
+              "paragraphStyle": null
+            }
+          }
+        ]
+      },
+      "hero-image": {
+        "resolvedPath": "/home/runner/work/frame-return/frame-return/test-results/native/assets/checker.png",
+        "sha256": "b7427b6b0f6426b96a32572fc0f632691c0d09ba7685e4e4fba8977a97f2a51f",
+        "geometry": [
+          40.0,
+          130.0,
+          96.0,
+          96.0
+        ]
+      }
+    },
+    "current": {
+      "headline": {
+        "text": "Open studio",
+        "geometry": [
+          80.0,
+          48.0,
+          260.0,
+          48.0
+        ],
+        "type": "TextFrame",
+        "previous": null,
+        "next": null,
+        "overflow": false,
+        "styleRuns": [
+          {
+            "start": 0,
+            "length": 5,
+            "style": {
+              "font": "DejaVu Sans Bold",
+              "size": 24.0,
+              "color": "Ink",
+              "namedStyle": "HeadlinePrimary",
+              "paragraphStyle": null
+            }
+          },
+          {
+            "start": 5,
+            "length": 6,
+            "style": {
+              "font": "DejaVu Sans Book",
+              "size": 24.0,
+              "color": "AccentCurrent",
+              "namedStyle": "HeadlineSecondary",
+              "paragraphStyle": null
+            }
+          }
+        ]
+      },
+      "sidebar": {
+        "text": "18:30",
+        "geometry": [
+          370.0,
+          48.0,
+          90.0,
+          44.0
+        ],
+        "type": "TextFrame",
+        "previous": null,
+        "next": null,
+        "overflow": false,
+        "styleRuns": [
+          {
+            "start": 0,
+            "length": 5,
+            "style": {
+              "font": "DejaVu Sans Book",
+              "size": 12.0,
+              "color": "Black",
+              "namedStyle": null,
+              "paragraphStyle": null
+            }
+          }
+        ]
+      },
+      "caption": {
+        "text": "Open studio: unchanged words in a separate native text frame.",
+        "geometry": [
+          40.0,
+          275.0,
+          420.0,
+          35.0
+        ],
+        "type": "TextFrame",
+        "previous": null,
+        "next": null,
+        "overflow": false,
+        "styleRuns": [
+          {
+            "start": 0,
+            "length": 61,
+            "style": {
+              "font": "DejaVu Sans Book",
+              "size": 11.0,
+              "color": "Ink",
+              "namedStyle": null,
+              "paragraphStyle": null
+            }
+          }
+        ]
+      },
+      "hero-image": {
+        "resolvedPath": "/home/runner/work/frame-return/frame-return/test-results/native/assets/checker.png",
+        "sha256": "b7427b6b0f6426b96a32572fc0f632691c0d09ba7685e4e4fba8977a97f2a51f",
+        "geometry": [
+          40.0,
+          130.0,
+          96.0,
+          96.0
+        ]
+      }
+    }
+  },
+  "xml": {
+    "baselineNamedStyles": {
+      "HeadlinePrimary": {
+        "CNAME": "HeadlinePrimary",
+        "FONT": "DejaVu Sans Bold",
+        "FONTSIZE": "20",
+        "FCOLOR": "Ink",
+        "SCOLOR": "Black",
+        "SCALEH": "100",
+        "SCALEV": "100"
+      },
+      "HeadlineSecondary": {
+        "CNAME": "HeadlineSecondary",
+        "FONT": "DejaVu Sans Book",
+        "FONTSIZE": "20",
+        "FCOLOR": "AccentBaseline",
+        "SCOLOR": "Black",
+        "SCALEH": "100",
+        "SCALEV": "100"
+      }
+    },
+    "currentNamedStyles": {
+      "HeadlinePrimary": {
+        "CNAME": "HeadlinePrimary",
+        "FONT": "DejaVu Sans Bold",
+        "FONTSIZE": "24",
+        "FCOLOR": "Ink",
+        "SCOLOR": "Black",
+        "SCALEH": "100",
+        "SCALEV": "100"
+      },
+      "HeadlineSecondary": {
+        "CNAME": "HeadlineSecondary",
+        "FONT": "DejaVu Sans Book",
+        "FONTSIZE": "24",
+        "FCOLOR": "AccentCurrent",
+        "SCOLOR": "Black",
+        "SCALEH": "100",
+        "SCALEV": "100"
+      }
+    },
+    "currentHeadlineRunAttributes": [
+      {
+        "CPARENT": "HeadlinePrimary",
+        "CH": "Open "
+      },
+      {
+        "CPARENT": "HeadlineSecondary",
+        "CH": "studio"
+      }
+    ]
+  },
+  "pdf": {
+    "pdfSha256": "adb3f498140776f1a8fe1ac2257faf4b9586b9ef1e5c97105d815d580743f8ef",
+    "embeddedFixtureImage": true,
+    "preview": "/home/runner/work/frame-return/frame-return/test-results/native/current-page.png",
+    "previewSha256": "682d71fe617ca2e93fa37c7bcca8fcf2a348926e452efbfe6c714acf93ac25dd"
+  },
+  "sha256": {
+    "baseline.sla": "89cd14e6788fcc41bd7d776193651ef5cc13ff2bac11e8e319c5e0aa59ae13e4",
+    "current.sla": "de3cff2f1cee61e1eaf487bb823fc62fa5ba2c90aafea079130c02a5a65f6b8d",
+    "assets/checker.png": "b7427b6b0f6426b96a32572fc0f632691c0d09ba7685e4e4fba8977a97f2a51f"
+  }
+}

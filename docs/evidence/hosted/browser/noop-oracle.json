@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "oracle": "FrameReturn independent lxml and lexical preservation oracle",
+  "checks": {
+    "secure_parse": true,
+    "unique_frame_identity": true,
+    "expected_ch_sequences": true,
+    "xml_topology": true,
+    "unapproved_attributes_text_and_tails": true,
+    "raw_bytes_outside_changed_ch": true,
+    "noop_byte_identity": true
+  },
+  "counts": {
+    "selected_frames": 0,
+    "approved_itext_runs": 0,
+    "changed_ch_values": 0,
+    "xml_nodes_checked": 24
+  },
+  "bytes": {
+    "current": 1400,
+    "output": 1400
+  },
+  "no_op": true
+}

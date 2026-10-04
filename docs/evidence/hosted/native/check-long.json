@@ -1,0 +1,142 @@
+{
+  "schema": "frame-return-native-check/v1",
+  "ok": true,
+  "case": "long",
+  "environment": {
+    "packages": {
+      "fonts-dejavu-core": "2.37-8",
+      "poppler-utils": "24.02.0-1ubuntu9.9",
+      "scribus": "1.6.1-0ubuntu7",
+      "scribus-data": "1.6.1-0ubuntu7",
+      "xauth": "1:1.1.2-1build1",
+      "xvfb": "2:21.1.12-1ubuntu1.8"
+    },
+    "githubRunId": "37220860607",
+    "githubSha": "09a08b05e2b5b1e50897763d895473f253ecb357",
+    "runnerImage": "20260927.320.1"
+  },
+  "input": "/home/runner/work/frame-return/frame-return/test-results/native/returned-long.sla",
+  "inputSha256": "494c30e2ee6186a34af8c896b3a4b201b2fd408bbcbe7008ef2b5262b69c1ca0",
+  "xml": {
+    "onlyAuthorizedCHChanged": true,
+    "namedStylesPreserved": true,
+    "scaleAndGeometryPreserved": true,
+    "allUnrelatedXmlPreserved": true
+  },
+  "native": {
+    "ok": true,
+    "nonce": "00422bfd3919493696a3aa9f2cb3a915",
+    "mode": "check",
+    "scribusVersion": "1.6.1",
+    "readback": {
+      "headline": {
+        "text": "Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community Community studio",
+        "geometry": [
+          80.0,
+          48.0,
+          260.0,
+          48.0
+        ],
+        "type": "TextFrame",
+        "previous": null,
+        "next": null,
+        "overflow": true,
+        "styleRuns": [
+          {
+            "start": 0,
+            "length": 1000,
+            "style": {
+              "font": "DejaVu Sans Bold",
+              "size": 24.0,
+              "color": "Ink",
+              "namedStyle": "HeadlinePrimary",
+              "paragraphStyle": null
+            }
+          },
+          {
+            "start": 1000,
+            "length": 6,
+            "style": {
+              "font": "DejaVu Sans Book",
+              "size": 24.0,
+              "color": "AccentCurrent",
+              "namedStyle": "HeadlineSecondary",
+              "paragraphStyle": null
+            }
+          }
+        ]
+      },
+      "sidebar": {
+        "text": "18:30",
+        "geometry": [
+          370.0,
+          48.0,
+          90.0,
+          44.0
+        ],
+        "type": "TextFrame",
+        "previous": null,
+        "next": null,
+        "overflow": false,
+        "styleRuns": [
+          {
+            "start": 0,
+            "length": 5,
+            "style": {
+              "font": "DejaVu Sans Book",
+              "size": 12.0,
+              "color": "Black",
+              "namedStyle": null,
+              "paragraphStyle": null
+            }
+          }
+        ]
+      },
+      "caption": {
+        "text": "Open studio: unchanged words in a separate native text frame.",
+        "geometry": [
+          40.0,
+          275.0,
+          420.0,
+          35.0
+        ],
+        "type": "TextFrame",
+        "previous": null,
+        "next": null,
+        "overflow": false,
+        "styleRuns": [
+          {
+            "start": 0,
+            "length": 61,
+            "style": {
+              "font": "DejaVu Sans Book",
+              "size": 11.0,
+              "color": "Ink",
+              "namedStyle": null,
+              "paragraphStyle": null
+            }
+          }
+        ]
+      },
+      "hero-image": {
+        "resolvedPath": "/home/runner/work/frame-return/frame-return/test-results/native/assets/checker.png",
+        "sha256": "b7427b6b0f6426b96a32572fc0f632691c0d09ba7685e4e4fba8977a97f2a51f",
+        "geometry": [
+          40.0,
+          130.0,
+          96.0,
+          96.0
+        ]
+      }
+    },
+    "pdf": "/home/runner/work/frame-return/frame-return/test-results/native/returned-long.pdf",
+    "freshProcess": true,
+    "browserDownloadResaved": false
+  },
+  "pdf": {
+    "pdfSha256": "1e4ec309683a15db840c937115a26dd45091f7a08bcfbcc32074d9be2fcbee51",
+    "embeddedFixtureImage": true,
+    "preview": "/home/runner/work/frame-return/frame-return/test-results/native/returned-long-page.png",
+    "previewSha256": "3ce34dcb197171ea606258c72256b9c2052544a6051fd382e16b603177e457aa"
+  }
+}

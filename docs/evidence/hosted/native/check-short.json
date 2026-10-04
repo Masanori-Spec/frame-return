@@ -1,0 +1,142 @@
+{
+  "schema": "frame-return-native-check/v1",
+  "ok": true,
+  "case": "short",
+  "environment": {
+    "packages": {
+      "fonts-dejavu-core": "2.37-8",
+      "poppler-utils": "24.02.0-1ubuntu9.9",
+      "scribus": "1.6.1-0ubuntu7",
+      "scribus-data": "1.6.1-0ubuntu7",
+      "xauth": "1:1.1.2-1build1",
+      "xvfb": "2:21.1.12-1ubuntu1.8"
+    },
+    "githubRunId": "37220860607",
+    "githubSha": "09a08b05e2b5b1e50897763d895473f253ecb357",
+    "runnerImage": "20260927.320.1"
+  },
+  "input": "/home/runner/work/frame-return/frame-return/test-results/native/returned-short.sla",
+  "inputSha256": "674d0cf4186f7f6094f884c44ee04b12f38af43131a54e043f93aaf18f1f4943",
+  "xml": {
+    "onlyAuthorizedCHChanged": true,
+    "namedStylesPreserved": true,
+    "scaleAndGeometryPreserved": true,
+    "allUnrelatedXmlPreserved": true
+  },
+  "native": {
+    "ok": true,
+    "nonce": "7297cf34f47648ae9aaed9b8fb722ee9",
+    "mode": "check",
+    "scribusVersion": "1.6.1",
+    "readback": {
+      "headline": {
+        "text": "Community studio",
+        "geometry": [
+          80.0,
+          48.0,
+          260.0,
+          48.0
+        ],
+        "type": "TextFrame",
+        "previous": null,
+        "next": null,
+        "overflow": false,
+        "styleRuns": [
+          {
+            "start": 0,
+            "length": 10,
+            "style": {
+              "font": "DejaVu Sans Bold",
+              "size": 24.0,
+              "color": "Ink",
+              "namedStyle": "HeadlinePrimary",
+              "paragraphStyle": null
+            }
+          },
+          {
+            "start": 10,
+            "length": 6,
+            "style": {
+              "font": "DejaVu Sans Book",
+              "size": 24.0,
+              "color": "AccentCurrent",
+              "namedStyle": "HeadlineSecondary",
+              "paragraphStyle": null
+            }
+          }
+        ]
+      },
+      "sidebar": {
+        "text": "18:30",
+        "geometry": [
+          370.0,
+          48.0,
+          90.0,
+          44.0
+        ],
+        "type": "TextFrame",
+        "previous": null,
+        "next": null,
+        "overflow": false,
+        "styleRuns": [
+          {
+            "start": 0,
+            "length": 5,
+            "style": {
+              "font": "DejaVu Sans Book",
+              "size": 12.0,
+              "color": "Black",
+              "namedStyle": null,
+              "paragraphStyle": null
+            }
+          }
+        ]
+      },
+      "caption": {
+        "text": "Open studio: unchanged words in a separate native text frame.",
+        "geometry": [
+          40.0,
+          275.0,
+          420.0,
+          35.0
+        ],
+        "type": "TextFrame",
+        "previous": null,
+        "next": null,
+        "overflow": false,
+        "styleRuns": [
+          {
+            "start": 0,
+            "length": 61,
+            "style": {
+              "font": "DejaVu Sans Book",
+              "size": 11.0,
+              "color": "Ink",
+              "namedStyle": null,
+              "paragraphStyle": null
+            }
+          }
+        ]
+      },
+      "hero-image": {
+        "resolvedPath": "/home/runner/work/frame-return/frame-return/test-results/native/assets/checker.png",
+        "sha256": "b7427b6b0f6426b96a32572fc0f632691c0d09ba7685e4e4fba8977a97f2a51f",
+        "geometry": [
+          40.0,
+          130.0,
+          96.0,
+          96.0
+        ]
+      }
+    },
+    "pdf": "/home/runner/work/frame-return/frame-return/test-results/native/returned-short.pdf",
+    "freshProcess": true,
+    "browserDownloadResaved": false
+  },
+  "pdf": {
+    "pdfSha256": "0a5f2b8d3a1baeb2bdc255800ef46e2b5a7fb68d7c9f1bc34ab4d8ac3bfb7c3d",
+    "embeddedFixtureImage": true,
+    "preview": "/home/runner/work/frame-return/frame-return/test-results/native/returned-short-page.png",
+    "previewSha256": "3d4edc2b88cb06073f2e225a10e4b3d9aba3c2c3c0d22b527f3027df36cb32a3"
+  }
+}
