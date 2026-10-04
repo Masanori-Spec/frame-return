@@ -1,0 +1,12 @@
+import fs from 'node:fs/promises';
+import{sampleSla}from'../src/fixture.mjs';
+import{createPacket,createReturn,applyReturn,serialize}from'../src/core.mjs';
+await fs.mkdir('generated',{recursive:true});
+const original=sampleSla(),current=sampleSla(true),packet=await createPacket(original,['headline','sidebar'],'original.sla');
+const corrections=await createReturn(packet,{headline:['Community ','studio'],sidebar:['19:00']});
+const result=await applyReturn(current,corrections,{originalPacket:packet,approvedNames:['headline'],excludeNames:['sidebar']});
+const noopPacket=await createPacket(original,['headline'],'original.sla');
+const noop=await applyReturn(current,await createReturn(noopPacket),{originalPacket:noopPacket});
+const files={'original.sla':original,'current.sla':current,'review.json':serialize(packet),'corrections.json':serialize(corrections),'revised.sla':result.output,'receipt.json':serialize(result.receipt),'expected.json':serialize({frames:{headline:['Community ','studio']}}),'noop.sla':noop.output,'noop-expected.json':serialize({frames:{}})};
+for(const[name,text]of Object.entries(files))await fs.writeFile(`generated/${name}`,text);
+console.log(`Wrote ${Object.keys(files).length} synthetic examples; these are not native Scribus proof`);

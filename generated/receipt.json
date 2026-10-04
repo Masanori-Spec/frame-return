@@ -1,0 +1,30 @@
+{
+  "format": "frame-return/receipt",
+  "version": 1,
+  "packetId": "cf162cc8138fbb31a4a5b2ee2de9479988d729684f091a264721170d490b08b3",
+  "originalSha256": "1950e2bac167bdc1e58e9d45ca35c3584365542d36a1e8749f594e2ba662b3db",
+  "currentSha256": "4d78b58c00cc9c5cd9868da6601aff192d2fafdf5ccddf652699667c8044d21b",
+  "outputSha256": "cbe1e246f4c4c285cc3fa6a281b936a091603117d8390392968118b82d924e32",
+  "bytePolicy": "Only approved ITEXT CH attribute value ranges were replaced",
+  "repeatPolicy": "Stale rejection, including already-applied wording",
+  "layoutValidation": "Required in Scribus; no browser layout or overflow guarantee",
+  "assets": "Not packaged. Save revised SLA beside current SLA.",
+  "frames": [
+    {
+      "name": "headline",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "name": "sidebar",
+      "status": "excluded",
+      "reason": "Current wording differs from the complete baseline"
+    }
+  ],
+  "changedRuns": [
+    {
+      "name": "headline",
+      "run": 0
+    }
+  ]
+}

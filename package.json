@@ -1,0 +1,20 @@
+{
+  "name": "frame-return",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Bounded wording returns for existing Scribus layouts",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "npm run build && npm test",
+    "fixture": "node scripts/export-example.mjs",
+    "test:oracle": "python3 tests/oracle.test.py && python3 scripts/check-oracle.py",
+    "test:browser": "node tests/browser-test.mjs",
+    "serve": "node scripts/serve.mjs",
+    "package": "python3 scripts/package.py"
+  },
+  "dependencies": { "sax": "1.6.1" },
+  "devDependencies": { "@playwright/test": "1.56.0", "esbuild": "0.25.11" }
+}

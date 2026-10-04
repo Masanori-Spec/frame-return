@@ -1,0 +1,2 @@
+import http from'node:http';import fs from'node:fs';
+const port=Number(process.env.PORT||4173),base=process.env.BASE_PATH||'/frame-return/';http.createServer((req,res)=>{if(req.url===base||req.url===base+'index.html'||req.url==='/'){res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});res.end(fs.readFileSync('dist/index.html'))}else{res.writeHead(404);res.end('Not found')}}).listen(port,'127.0.0.1',()=>console.log(`http://127.0.0.1:${port}${base}`));

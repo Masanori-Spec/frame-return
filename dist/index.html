@@ -1,0 +1,2510 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<!-- Runtime dependency sax 1.6.1 license:
+# Blue Oak Model License
+
+Version 1.0.0
+
+## Purpose
+
+This license gives everyone as much permission to work with
+this software as possible, while protecting contributors
+from liability.
+
+## Acceptance
+
+In order to receive this license, you must agree to its
+rules.  The rules of this license are both obligations
+under that agreement and conditions to your license.
+You must not do anything with this software that triggers
+a rule that you cannot or will not follow.
+
+## Copyright
+
+Each contributor licenses you to do everything with this
+software that would otherwise infringe that contributor's
+copyright in it.
+
+## Notices
+
+You must ensure that everyone who gets a copy of
+any part of this software from you, with or without
+changes, also gets the text of this license or a link to
+<https://blueoakcouncil.org/license/1.0.0>.
+
+## Excuse
+
+If anyone notifies you in writing that you have not
+complied with [Notices](#notices), you can keep your
+license by taking all practical steps to comply within 30
+days after the notice.  If you do not do so, your license
+ends immediately.
+
+## Patent
+
+Each contributor licenses you to do everything with this
+software that would otherwise infringe any patent claims
+they can license or become able to license.
+
+## Reliability
+
+No contributor can revoke this license.
+
+## No Liability
+
+***As far as the law allows, this software comes as is,
+without any warranty or condition, and no contributor
+will be liable to anyone for any damages related to this
+software or this license, under any kind of legal claim.***
+
+-->
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Return selected wording corrections to a newer Scribus layout. Local-only, conflict checked.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>FrameReturn · Scribus wording handoff</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='3' width='26' height='26' rx='5' fill='%232c5148'/%3E%3Cpath d='M9 10h14M9 16h10M9 22h7' stroke='%23e2f3ba' stroke-width='3'/%3E%3C/svg%3E">
+<style>:root{font-family:Inter,"Noto Sans",-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN",Meiryo,sans-serif;color:#263d36;background:#f6f5ee;font-synthesis:none;--green:#2c5148;--muted:#63716a;--line:#d9ded2;--paper:#fffef9;--lime:#e2f3ba;--orange:#a84222}*{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit}button,select{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.43}button{border:0}a{color:inherit}header{height:90px;border-bottom:1px solid var(--line);max-width:1440px;margin:auto;padding:0 6%;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{text-decoration:none;font-size:25px;font-weight:750;letter-spacing:-1px;display:flex;align-items:center;gap:9px}.mark{display:grid;place-items:center;background:var(--green);color:var(--lime);width:33px;height:37px;border-radius:2px;font-size:30px}.header-right{display:flex;align-items:center;gap:26px}.local{font-size:12px;color:var(--muted)}.local:before{content:"";width:7px;height:7px;border-radius:50%;display:inline-block;background:#688257;margin-right:8px}.language select{background:transparent;border:1px solid var(--line);border-radius:4px;padding:8px 10px;color:var(--green)}main{max-width:1240px;margin:auto;padding:0 44px}.intro{display:flex;justify-content:space-between;gap:60px;padding:45px 0 35px;align-items:center}.intro>div{max-width:630px}.eyebrow,.caps{font-size:10px;font-weight:750;letter-spacing:.15em}.eyebrow{color:#798171;margin:0 0 14px}h1{font-size:38px;line-height:1.5;letter-spacing:-.04em;font-weight:600;margin:0 0 13px}.intro p:not(.eyebrow){font-size:14px;line-height:1.9;margin:0;color:var(--muted)}.contract{min-width:270px;max-width:310px;border-left:2px solid #b3c497;padding:5px 0 5px 22px}.contract .caps{display:block;margin-bottom:10px}.contract p{font-size:12px!important;line-height:1.85!important}.limit{font-size:11px;display:block;color:var(--muted);margin-top:14px}.toolbar{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:25px;gap:16px}.tabs{display:flex;gap:28px}.tab{padding:20px 0;background:none;color:var(--muted);display:flex;gap:11px;align-items:center;position:relative}.tab span{font-size:10px;color:#899483;font-family:monospace}.tab b{font-size:13px;font-weight:600}.tab.active{color:var(--green)}.tab.active:after{position:absolute;bottom:-1px;left:0;width:100%;height:3px;background:var(--green);content:""}.text-button{font-size:11px;background:none;color:var(--muted);text-decoration:underline;text-underline-offset:4px;padding:10px}.panel{border:1px solid var(--line);border-radius:6px;background:var(--paper);padding:29px 32px;box-shadow:0 5px 20px #293e3310}.panel-title{display:flex;align-items:center;justify-content:space-between;gap:15px}.panel-title .eyebrow{margin-bottom:7px}.panel h2{font-size:21px;letter-spacing:-.02em;margin:0;font-weight:600}.help{font-size:12px;line-height:1.8;color:var(--muted);margin:16px 0 20px}.primary,.secondary{padding:12px 18px;border-radius:4px;font-size:12px;font-weight:650;line-height:1.5}.primary{background:var(--green);color:#fffef8}.secondary{border:1px solid #a6b7a7;background:transparent;color:var(--green)}button:hover:not(:disabled){filter:brightness(.95)}.file-card{position:relative;background:#f0f3e9;border:1px dashed #bac5b2;display:flex;gap:15px;align-items:center;padding:23px 24px;border-radius:4px;cursor:pointer;min-height:104px;overflow:hidden}.file-card input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer}.file-card:focus-within{outline:3px solid #a0c082;outline-offset:3px}.file-card strong{font-size:14px;display:block}.file-card small{font-size:11px;display:block;margin-top:8px;color:var(--muted);overflow-wrap:anywhere}.file-icon{font-size:27px;color:#879d77}.compact{padding:18px 21px;min-height:93px}.section-label{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin:24px 0 11px}.empty{padding:34px 20px;text-align:center;border:1px solid #e4e7dc;border-radius:3px;font-size:12px;color:#7a8477;background:#fafaf5;line-height:1.8}.frame{display:flex;align-items:flex-start;gap:14px;padding:18px;border:1px solid var(--line);margin-top:-1px}.frame:first-child{border-radius:4px 4px 0 0}.frame:last-child{border-radius:0 0 4px 4px}.frame:has(input:checked){background:#f5f8eb}.frame input{margin:5px 0 0;width:17px;height:17px;accent-color:var(--green);flex-shrink:0}.frame-body{min-width:0;flex:1}.frame-head{display:flex;justify-content:space-between;gap:12px}.frame-name{font-family:monospace;font-size:13px;font-weight:700;overflow-wrap:anywhere}.frame-meta{font-size:10px;color:#76816e;flex-shrink:0}.frame-copy{font-size:14px;line-height:1.7;margin:7px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}.unsupported{font-size:11px;color:var(--orange);margin:8px 0 0}.actions{border-top:1px solid var(--line);padding-top:20px;margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:30px}.actions p{font-size:11px;color:var(--muted);line-height:1.8;max-width:540px;margin:0}.actions button{flex-shrink:0}.review-frame,.return-frame{border:1px solid var(--line);border-radius:4px;margin-top:18px;overflow:hidden}.card-heading{padding:15px 18px;background:#f0f2e8;display:flex;align-items:center;gap:15px;justify-content:space-between}.card-heading h3{margin:0;font:600 13px monospace;overflow-wrap:anywhere}.card-heading small{font-size:10px;color:var(--muted)}.run-editor{padding:15px 18px;border-top:1px solid #e6e9dd}.run-label{display:flex;justify-content:space-between;gap:12px;font-size:11px;color:var(--muted);margin-bottom:8px}.baseline{font-size:12px;color:#839075;white-space:pre-wrap;overflow-wrap:anywhere;margin:0 0 8px;padding:8px 10px;border-left:2px solid #c9d4b9;background:#f8faf2}.run-editor textarea{display:block;width:100%;min-height:67px;resize:vertical;border:1px solid #adbca7;border-radius:3px;padding:13px;background:#fff;font-size:15px;line-height:1.6;color:#263d36}.imports{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin-top:24px}.compare-bar{display:flex;align-items:center;justify-content:space-between;gap:25px;margin:20px 0}.compare-bar p{font-size:12px;line-height:1.8;color:var(--muted);max-width:660px;margin:0}.compare-bar button{flex-shrink:0}.status{font:600 10px sans-serif;padding:5px 8px;border-radius:3px;background:var(--lime);color:#405435}.status.conflict{background:#fbe2d4;color:#983619}.status.unchanged{background:#e5e9e0;color:#647060}.comparison{display:grid;grid-template-columns:repeat(3,1fr);padding:16px 18px;gap:14px}.comparison div{min-width:0}.comparison small{display:block;font-size:10px;color:var(--muted);margin-bottom:8px}.comparison p{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.65;margin:0;padding:10px;background:#f7f8f0;min-height:45px}.decision{border-top:1px solid var(--line);display:flex;gap:22px;padding:13px 18px;font-size:12px}.decision label{display:flex;align-items:center;gap:8px;cursor:pointer}.decision input{accent-color:var(--green);width:16px;height:16px;margin:0}.conflict-reason{font-size:12px;line-height:1.7;color:var(--orange);margin:0;padding:0 18px 15px}.downloads{background:var(--lime);padding:24px;border-radius:4px;margin-top:25px;display:flex;gap:35px;align-items:center}.downloads h3{font-size:17px;line-height:1.6;margin:8px 0}.downloads p{font-size:12px;line-height:1.8;max-width:660px;margin:0}.download-buttons{display:flex;flex-direction:column;gap:10px;flex-shrink:0}.bounds{padding:30px 0 28px;display:grid;grid-template-columns:190px 1.4fr 1fr;gap:24px}.bounds h2{font-size:12px;font-weight:600;margin:0}.bounds p{font-size:11px;color:var(--muted);line-height:1.8;margin:0}.notice{padding:14px 18px;border:1px solid #b2c99b;background:#eaf3dc;font-size:12px;line-height:1.8;border-radius:4px;overflow-wrap:anywhere}.notice.error{border-color:#ddb8a4;background:#fff0e7;color:#8f361d}footer{max-width:1240px;margin:auto;padding:20px 44px 35px;display:flex;justify-content:space-between;border-top:1px solid var(--line);font-size:11px;color:#7a8578}.version{font-size:9px;vertical-align:super}.skip{position:absolute;top:-70px;left:15px;padding:13px;background:var(--green);color:white;z-index:10}.skip:focus{top:10px}.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid #9eba77;outline-offset:3px}[hidden]{display:none!important}@media(max-width:850px){header{padding:0 25px;height:75px}.local{display:none}main{padding:0 25px}.intro{gap:25px;padding-top:32px}.intro h1{font-size:31px}.contract{min-width:220px;padding-left:17px}.tabs{gap:20px}.bounds{grid-template-columns:1fr 1fr}.bounds h2{grid-column:1/-1}.panel{padding:25px}.downloads{flex-direction:column;align-items:stretch;gap:18px}.download-buttons{flex-direction:row}.comparison{gap:9px}.actions{gap:20px}footer{padding:20px 25px}}@media(max-width:600px){header{padding:0 18px;height:70px}.brand{font-size:23px}.header-right{gap:0}.language select{font-size:12px;padding:7px}main{padding:0 16px}.intro{display:block;padding:29px 4px 25px}.intro h1{font-size:29px;line-height:1.45}.intro p:not(.eyebrow){font-size:12px}.contract{margin-top:23px;max-width:none;padding:0 0 0 13px;display:none}.toolbar{gap:8px;align-items:stretch}.tabs{gap:17px;flex:1}.tab{display:block;text-align:left;padding:16px 0}.tab span{display:block;margin-bottom:5px}.tab b{font-size:11px}.text-button{font-size:10px;padding:6px;max-width:63px;line-height:1.6}.panel{padding:22px 16px;border-radius:4px}.panel-title{align-items:flex-start;gap:10px}.panel h2{font-size:18px;line-height:1.6}.panel-title .secondary{padding:8px;font-size:10px;max-width:95px;flex-shrink:0}.help{font-size:11px;margin:13px 0 18px}.file-card{padding:19px 16px}.file-card strong{font-size:13px}.file-card small{font-size:10px}.frame{padding:14px 12px;gap:10px}.frame-head{display:block}.frame-meta{display:block;margin-top:5px}.frame-copy{font-size:13px}.actions{display:block;padding-top:17px;margin-top:19px}.actions button{width:100%;margin-top:15px}.actions p{font-size:10px}.imports{grid-template-columns:1fr;margin-top:18px}.compare-bar{display:block}.compare-bar p{font-size:11px}.compare-bar button{margin-top:12px;width:100%}.comparison{grid-template-columns:1fr;padding:14px;gap:12px}.comparison small{margin-bottom:4px}.comparison p{padding:8px;font-size:12px}.decision{padding:14px;flex-wrap:wrap;gap:15px;font-size:11px}.card-heading{padding:12px 14px}.run-editor{padding:14px}.run-label{font-size:10px}.run-editor textarea{font-size:16px}.downloads{padding:18px}.downloads h3{font-size:16px}.downloads p{font-size:11px}.download-buttons{flex-direction:column}.bounds{display:block;padding:25px 4px}.bounds h2{margin-bottom:12px}.bounds p{margin-bottom:12px;font-size:10px}footer{padding:18px 20px;font-size:10px;gap:15px}.intro .eyebrow{font-size:9px}.notice{font-size:11px;padding:12px}.status{white-space:nowrap}}
+
+.assignment{margin-top:22px}
+</style>
+</head>
+<body>
+<a href="#workspace" class="skip" data-i18n="skip">作業画面へ</a>
+<header><a class="brand" href="#workspace" aria-label="FrameReturn"><span class="mark" aria-hidden="true">↳</span> FrameReturn</a><div class="header-right"><span class="local" data-i18n="local">ローカル処理・アップロードなし</span><label class="language"><span class="sr-only" data-i18n="language">言語</span><select id="language"><option value="ja">日本語</option><option value="en">English</option></select></label></div></header>
+<main id="workspace" tabindex="-1">
+<section class="intro"><div><p class="eyebrow">SCRIBUS · COPYEDIT RETURN</p><h1 data-i18n="title">ことばを戻す。<br>いまのレイアウトへ。</h1><p data-i18n="intro">指定した文章だけを校正し、制作が進んだ SLA に戻す。文字の変更が重なったフレームは、適用前に止めます。</p></div><aside class="contract"><span class="caps" data-i18n="contract">このツールの範囲</span><p data-i18n="scope">Scribus 1.6.x · 非圧縮 UTF-8 SLA<br>名前が固有の、リンクされていないテキストフレーム</p><span class="limit" data-i18n="limits">32 フレーム / 各 3,000 文字・128 ランまで</span></aside></section>
+<div class="toolbar"><nav aria-label="Workflow" class="tabs"><button id="tab-prepare" class="tab active" aria-current="step"><span>01</span><b data-i18n="prepare">依頼をつくる</b></button><button id="tab-review" class="tab"><span>02</span><b data-i18n="review">ことばを校正</b></button><button id="tab-apply" class="tab"><span>03</span><b data-i18n="apply">最新版に戻す</b></button></nav><button id="reset" class="text-button" data-i18n="reset">すべてリセット</button></div>
+<p id="notice" class="notice" role="status" aria-live="polite" hidden></p>
+<section id="prepare-panel" class="panel" aria-labelledby="prepare-heading"><div class="panel-title"><div><p class="eyebrow" data-i18n="designer">DESIGNER / 依頼側</p><h2 id="prepare-heading" data-i18n="prepareHeading">校正を頼むフレームを選ぶ</h2></div><button id="sample-source" class="secondary" data-i18n="sampleSource">サンプルで試す</button></div><p class="help" data-i18n="prepareHelp">Scribus でフレームに固有の名前を付けて保存。校正を依頼する箇所だけを選びます。サンプルは画面・構文テスト用です。</p><label class="file-card"><span class="file-icon" aria-hidden="true">↥</span><span><strong data-i18n="sourceLabel">依頼時点の SLA</strong><small id="source-name" data-i18n="sourceHint">非圧縮 .sla を選択 · 最大 16 MiB</small></span><input id="source-input" type="file" accept=".sla,application/xml,text/xml" aria-label="Source SLA"></label><div class="section-label"><span data-i18n="choose">依頼する箇所</span><span id="selection-count">0 / 32</span></div><div id="frame-list" class="frame-list"><div class="empty" data-i18n="sourceEmpty">SLA を読み込むと、依頼できるフレームが表示されます。</div></div><div class="actions"><p data-i18n="packetHint">依頼パケットには選択した文章が含まれます。信頼できる校正担当者に渡してください。</p><button id="create-packet" class="primary" disabled data-i18n="createPacket">依頼パケットを保存 →</button></div></section>
+<section id="review-panel" class="panel" aria-labelledby="review-heading" hidden><div class="panel-title"><div><p class="eyebrow" data-i18n="copyeditor">COPYEDITOR / 校正側</p><h2 id="review-heading" data-i18n="reviewHeading">書式の区切りを保って、文章を直す</h2></div></div><label class="file-card compact"><span class="file-icon" aria-hidden="true">↥</span><span><strong data-i18n="packetLabel">依頼パケット JSON</strong><small id="review-name" data-i18n="packetFileHint">frame-return-review.json を選択</small></span><input id="review-input" type="file" accept=".json,application/json" aria-label="Review packet"></label><p class="help" data-i18n="reviewHelp">欄ごとに書式が異なります。段落・欄の区切りは固定です。改行やタブは入れず、欄内の文章だけを編集してください。</p><div id="review-list" class="review-list"><div class="empty" data-i18n="reviewEmpty">依頼パケットを読み込んでください。</div></div><div class="actions"><p data-i18n="reviewHint">この画面は校正用の文章表示です。実際の組版・収まりは Scribus で確認します。</p><button id="save-return" class="primary" disabled data-i18n="saveReturn">修正パケットを保存 →</button></div></section>
+<section id="apply-panel" class="panel" aria-labelledby="apply-heading" hidden><div class="panel-title"><div><p class="eyebrow" data-i18n="designer">DESIGNER / 依頼側</p><h2 id="apply-heading" data-i18n="applyHeading">修正と、いまの制作ファイルを照合</h2></div><button id="sample-current" class="secondary" data-i18n="sampleCurrent">サンプルの最新版</button></div><label class="file-card compact assignment"><span class="file-icon" aria-hidden="true">↥</span><span><strong data-i18n="assignmentLabel">依頼時に保存した元のパケット JSON</strong><small id="assignment-name" data-i18n="assignmentHint">修正パケット内のコピーとは別に照合します</small></span><input id="assignment-input" type="file" accept=".json,application/json" aria-label="Original review packet"></label><div class="imports"><label class="file-card compact"><span class="file-icon" aria-hidden="true">↥</span><span><strong data-i18n="returnLabel">返ってきた修正 JSON</strong><small id="return-name" data-i18n="returnHint">frame-return-corrections.json</small></span><input id="return-input" type="file" accept=".json,application/json" aria-label="Corrections packet"></label><label class="file-card compact"><span class="file-icon" aria-hidden="true">↥</span><span><strong data-i18n="currentLabel">最新版の SLA</strong><small id="current-name" data-i18n="currentHint">いま作業中の .sla を選択</small></span><input id="current-input" type="file" accept=".sla,application/xml,text/xml" aria-label="Current SLA"></label></div><div class="compare-bar"><p data-i18n="compareHelp">名前・全文章・ランと段落の区切りを照合。配置、書式、その他の文章は最新版のまま残します。</p><button id="analyze" class="secondary" disabled data-i18n="analyze">修正を照合</button></div><div id="return-list"><div class="empty" data-i18n="applyEmpty">両方のファイルを読み込んで照合してください。</div></div><div class="actions"><p id="apply-hint" data-i18n="applyHint">変更ごとに承認。競合は明示的に除外するまで出力できません。</p><button id="apply-return" class="primary" disabled data-i18n="applyReturn">承認した修正を適用</button></div><div id="downloads" class="downloads" hidden><div><span class="caps" data-i18n="ready">出力を作成しました</span><h3 data-i18n="saveBeside">必ず最新版 SLA と同じフォルダに保存</h3><p data-i18n="assetWarning">画像は同梱されません。相対パスを維持して Scribus で開き、文字あふれ・書式・PDF を確認してください。自動縮小は行いません。</p></div><div class="download-buttons"><button id="download-sla" class="primary" data-i18n="downloadSla">修正版 SLA を保存</button><button id="download-receipt" class="secondary" data-i18n="downloadReceipt">適用記録 JSON を保存</button></div></div></section>
+<section class="bounds"><h2 data-i18n="boundsHeading">安全に戻せる範囲だけ</h2><p data-i18n="bounds">リンク・グループ・マスター・表・インライン要素・特殊な改行やタブは対象外です。名前の変更や同じ名前での作り直しは追跡できません。同じ修正の再適用は古い依頼として止めます。</p><p data-i18n="privacy">ファイル処理はこのブラウザ内だけ。サーバー送信・履歴保存はありません。閉じる前に必要なファイルを保存してください。</p></section>
+</main><footer><span>FrameReturn <span class="version">0.1</span></span><span data-i18n="footer">組版の最終確認は Scribus で。</span></footer>
+<script>(() => {
+  var __create = Object.create;
+  var __defProp = Object.defineProperty;
+  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+  var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __getProtoOf = Object.getPrototypeOf;
+  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __require = /* @__PURE__ */ ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, {
+    get: (a, b) => (typeof require !== "undefined" ? require : a)[b]
+  }) : x)(function(x) {
+    if (typeof require !== "undefined") return require.apply(this, arguments);
+    throw Error('Dynamic require of "' + x + '" is not supported');
+  });
+  var __commonJS = (cb, mod) => function __require2() {
+    return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+  };
+  var __copyProps = (to, from, except, desc) => {
+    if (from && typeof from === "object" || typeof from === "function") {
+      for (let key of __getOwnPropNames(from))
+        if (!__hasOwnProp.call(to, key) && key !== except)
+          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+    }
+    return to;
+  };
+  var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+    // If the importer is in node compatibility mode or this is not an ESM
+    // file that has been converted to a CommonJS file using a Babel-
+    // compatible transform (i.e. "__esModule" has not been set), then set
+    // "default" to the CommonJS "module.exports" for node compatibility.
+    isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+    mod
+  ));
+
+  // node_modules/sax/lib/sax.js
+  var require_sax = __commonJS({
+    "node_modules/sax/lib/sax.js"(exports) {
+      (function(sax2) {
+        sax2.parser = function(strict, opt) {
+          return new SAXParser(strict, opt);
+        };
+        sax2.SAXParser = SAXParser;
+        sax2.SAXStream = SAXStream;
+        sax2.createStream = createStream;
+        sax2.MAX_BUFFER_LENGTH = 64 * 1024;
+        var buffers = [
+          "comment",
+          "sgmlDecl",
+          "textNode",
+          "tagName",
+          "doctype",
+          "procInstName",
+          "procInstBody",
+          "entity",
+          "attribName",
+          "attribValue",
+          "cdata",
+          "script"
+        ];
+        sax2.EVENTS = [
+          "text",
+          "processinginstruction",
+          "sgmldeclaration",
+          "doctype",
+          "comment",
+          "opentagstart",
+          "attribute",
+          "opentag",
+          "closetag",
+          "opencdata",
+          "cdata",
+          "closecdata",
+          "error",
+          "end",
+          "ready",
+          "script",
+          "opennamespace",
+          "closenamespace"
+        ];
+        function SAXParser(strict, opt) {
+          if (!(this instanceof SAXParser)) {
+            return new SAXParser(strict, opt);
+          }
+          var parser = this;
+          clearBuffers(parser);
+          parser.q = parser.c = "";
+          parser.bufferCheckPosition = sax2.MAX_BUFFER_LENGTH;
+          parser.encoding = null;
+          parser.opt = opt || {};
+          parser.opt.lowercase = parser.opt.lowercase || parser.opt.lowercasetags;
+          parser.looseCase = parser.opt.lowercase ? "toLowerCase" : "toUpperCase";
+          parser.opt.maxEntityCount = parser.opt.maxEntityCount || 512;
+          parser.opt.maxEntityDepth = parser.opt.maxEntityDepth || 4;
+          parser.entityCount = parser.entityDepth = 0;
+          parser.tags = [];
+          parser.closed = parser.closedRoot = parser.sawRoot = false;
+          parser.tag = parser.error = null;
+          parser.strict = !!strict;
+          parser.noscript = !!(strict || parser.opt.noscript);
+          parser.state = S.BEGIN;
+          parser.strictEntities = parser.opt.strictEntities;
+          parser.ENTITIES = parser.strictEntities ? Object.create(sax2.XML_ENTITIES) : Object.create(sax2.ENTITIES);
+          parser.attribList = [];
+          if (parser.opt.xmlns) {
+            parser.ns = Object.create(rootNS);
+          }
+          if (parser.opt.unquotedAttributeValues === void 0) {
+            parser.opt.unquotedAttributeValues = !strict;
+          }
+          parser.trackPosition = parser.opt.position !== false;
+          if (parser.trackPosition) {
+            parser.position = parser.line = parser.column = 0;
+          }
+          emit(parser, "onready");
+        }
+        if (!Object.create) {
+          Object.create = function(o) {
+            function F() {
+            }
+            F.prototype = o;
+            var newf = new F();
+            return newf;
+          };
+        }
+        if (!Object.keys) {
+          Object.keys = function(o) {
+            var a = [];
+            for (var i in o) if (o.hasOwnProperty(i)) a.push(i);
+            return a;
+          };
+        }
+        function checkBufferLength(parser) {
+          var maxAllowed = Math.max(sax2.MAX_BUFFER_LENGTH, 10);
+          var maxActual = 0;
+          for (var i = 0, l = buffers.length; i < l; i++) {
+            var len = parser[buffers[i]].length;
+            if (len > maxAllowed) {
+              switch (buffers[i]) {
+                case "textNode":
+                  closeText(parser);
+                  break;
+                case "cdata":
+                  emitNode(parser, "oncdata", parser.cdata);
+                  parser.cdata = "";
+                  break;
+                case "script":
+                  emitNode(parser, "onscript", parser.script);
+                  parser.script = "";
+                  break;
+                default:
+                  error(parser, "Max buffer length exceeded: " + buffers[i]);
+              }
+            }
+            maxActual = Math.max(maxActual, len);
+          }
+          var m = sax2.MAX_BUFFER_LENGTH - maxActual;
+          parser.bufferCheckPosition = m + parser.position;
+        }
+        function clearBuffers(parser) {
+          for (var i = 0, l = buffers.length; i < l; i++) {
+            parser[buffers[i]] = "";
+          }
+        }
+        function flushBuffers(parser) {
+          closeText(parser);
+          if (parser.cdata !== "") {
+            emitNode(parser, "oncdata", parser.cdata);
+            parser.cdata = "";
+          }
+          if (parser.script !== "") {
+            emitNode(parser, "onscript", parser.script);
+            parser.script = "";
+          }
+        }
+        SAXParser.prototype = {
+          end: function() {
+            end(this);
+          },
+          write,
+          resume: function() {
+            this.error = null;
+            return this;
+          },
+          close: function() {
+            return this.write(null);
+          },
+          flush: function() {
+            flushBuffers(this);
+          }
+        };
+        var Stream;
+        try {
+          Stream = __require("stream").Stream;
+        } catch (ex) {
+          Stream = function() {
+          };
+        }
+        if (!Stream) Stream = function() {
+        };
+        var streamWraps = sax2.EVENTS.filter(function(ev) {
+          return ev !== "error" && ev !== "end";
+        });
+        function createStream(strict, opt) {
+          return new SAXStream(strict, opt);
+        }
+        function determineBufferEncoding(data, isEnd) {
+          if (data.length >= 2) {
+            if (data[0] === 255 && data[1] === 254) {
+              return "utf-16le";
+            }
+            if (data[0] === 254 && data[1] === 255) {
+              return "utf-16be";
+            }
+          }
+          if (data.length >= 3 && data[0] === 239 && data[1] === 187 && data[2] === 191) {
+            return "utf8";
+          }
+          if (data.length >= 4) {
+            if (data[0] === 60 && data[1] === 0 && data[2] === 63 && data[3] === 0) {
+              return "utf-16le";
+            }
+            if (data[0] === 0 && data[1] === 60 && data[2] === 0 && data[3] === 63) {
+              return "utf-16be";
+            }
+            return "utf8";
+          }
+          return isEnd ? "utf8" : null;
+        }
+        function SAXStream(strict, opt) {
+          if (!(this instanceof SAXStream)) {
+            return new SAXStream(strict, opt);
+          }
+          Stream.apply(this);
+          this._parser = new SAXParser(strict, opt);
+          this.writable = true;
+          this.readable = true;
+          var me = this;
+          this._parser.onend = function() {
+            me.emit("end");
+          };
+          this._parser.onerror = function(er) {
+            me.emit("error", er);
+            me._parser.error = null;
+          };
+          this._decoder = null;
+          this._decoderBuffer = null;
+          streamWraps.forEach(function(ev) {
+            Object.defineProperty(me, "on" + ev, {
+              get: function() {
+                return me._parser["on" + ev];
+              },
+              set: function(h) {
+                if (!h) {
+                  me.removeAllListeners(ev);
+                  me._parser["on" + ev] = h;
+                  return h;
+                }
+                me.on(ev, h);
+              },
+              enumerable: true,
+              configurable: false
+            });
+          });
+        }
+        SAXStream.prototype = Object.create(Stream.prototype, {
+          constructor: {
+            value: SAXStream
+          }
+        });
+        SAXStream.prototype._decodeBuffer = function(data, isEnd) {
+          if (this._decoderBuffer) {
+            data = Buffer.concat([this._decoderBuffer, data]);
+            this._decoderBuffer = null;
+          }
+          if (!this._decoder) {
+            var encoding = determineBufferEncoding(data, isEnd);
+            if (!encoding) {
+              this._decoderBuffer = data;
+              return "";
+            }
+            this._parser.encoding = encoding;
+            this._decoder = new TextDecoder(encoding);
+          }
+          return this._decoder.decode(data, { stream: !isEnd });
+        };
+        SAXStream.prototype.write = function(data) {
+          if (typeof Buffer === "function" && typeof Buffer.isBuffer === "function" && Buffer.isBuffer(data)) {
+            data = this._decodeBuffer(data, false);
+          } else if (this._decoderBuffer) {
+            var remaining = this._decodeBuffer(Buffer.alloc(0), true);
+            if (remaining) {
+              this._parser.write(remaining);
+              this.emit("data", remaining);
+            }
+          }
+          this._parser.write(data.toString());
+          this.emit("data", data);
+          return true;
+        };
+        SAXStream.prototype.end = function(chunk) {
+          if (chunk && chunk.length) {
+            this.write(chunk);
+          }
+          if (this._decoderBuffer) {
+            var finalChunk = this._decodeBuffer(Buffer.alloc(0), true);
+            if (finalChunk) {
+              this._parser.write(finalChunk);
+              this.emit("data", finalChunk);
+            }
+          } else if (this._decoder) {
+            var remaining = this._decoder.decode();
+            if (remaining) {
+              this._parser.write(remaining);
+              this.emit("data", remaining);
+            }
+          }
+          this._parser.end();
+          return true;
+        };
+        SAXStream.prototype.on = function(ev, handler) {
+          var me = this;
+          if (!me._parser["on" + ev] && streamWraps.indexOf(ev) !== -1) {
+            me._parser["on" + ev] = function() {
+              var args = arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments);
+              args.splice(0, 0, ev);
+              me.emit.apply(me, args);
+            };
+          }
+          return Stream.prototype.on.call(me, ev, handler);
+        };
+        var CDATAre = /^\[CDATA\[$/i;
+        var DOCTYPEre = /^DOCTYPE$/i;
+        var XML_NAMESPACE = "http://www.w3.org/XML/1998/namespace";
+        var XMLNS_NAMESPACE = "http://www.w3.org/2000/xmlns/";
+        var rootNS = { xml: XML_NAMESPACE, xmlns: XMLNS_NAMESPACE };
+        var nameStart = /[:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/;
+        var nameBody = /[:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u00B7\u0300-\u036F\u203F-\u2040.\d-]/;
+        var entityStart = /[#:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD]/;
+        var entityBody = /[#:_A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02FF\u0370-\u037D\u037F-\u1FFF\u200C-\u200D\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u00B7\u0300-\u036F\u203F-\u2040.\d-]/;
+        function isWhitespace(c) {
+          return c === " " || c === "\n" || c === "\r" || c === "	";
+        }
+        function isQuote(c) {
+          return c === '"' || c === "'";
+        }
+        function isAttribEnd(c) {
+          return c === ">" || isWhitespace(c);
+        }
+        function isMatch(regex, c) {
+          return regex.test(c);
+        }
+        function notMatch(regex, c) {
+          return !isMatch(regex, c);
+        }
+        var S = 0;
+        sax2.STATE = {
+          BEGIN: S++,
+          // leading byte order mark or whitespace
+          BEGIN_WHITESPACE: S++,
+          // leading whitespace
+          TEXT: S++,
+          // general stuff
+          TEXT_ENTITY: S++,
+          // &amp and such.
+          OPEN_WAKA: S++,
+          // <
+          SGML_DECL: S++,
+          // <!BLARG
+          SGML_DECL_QUOTED: S++,
+          // <!BLARG foo "bar
+          DOCTYPE: S++,
+          // <!DOCTYPE
+          DOCTYPE_QUOTED: S++,
+          // <!DOCTYPE "//blah
+          DOCTYPE_DTD: S++,
+          // <!DOCTYPE "//blah" [ ...
+          DOCTYPE_DTD_QUOTED: S++,
+          // <!DOCTYPE "//blah" [ "foo
+          COMMENT_STARTING: S++,
+          // <!-
+          COMMENT: S++,
+          // <!--
+          COMMENT_ENDING: S++,
+          // <!-- blah -
+          COMMENT_ENDED: S++,
+          // <!-- blah --
+          CDATA: S++,
+          // <![CDATA[ something
+          CDATA_ENDING: S++,
+          // ]
+          CDATA_ENDING_2: S++,
+          // ]]
+          PROC_INST: S++,
+          // <?hi
+          PROC_INST_BODY: S++,
+          // <?hi there
+          PROC_INST_ENDING: S++,
+          // <?hi "there" ?
+          OPEN_TAG: S++,
+          // <strong
+          OPEN_TAG_SLASH: S++,
+          // <strong /
+          ATTRIB: S++,
+          // <a
+          ATTRIB_NAME: S++,
+          // <a foo
+          ATTRIB_NAME_SAW_WHITE: S++,
+          // <a foo _
+          ATTRIB_VALUE: S++,
+          // <a foo=
+          ATTRIB_VALUE_QUOTED: S++,
+          // <a foo="bar
+          ATTRIB_VALUE_CLOSED: S++,
+          // <a foo="bar"
+          ATTRIB_VALUE_UNQUOTED: S++,
+          // <a foo=bar
+          ATTRIB_VALUE_ENTITY_Q: S++,
+          // <foo bar="&quot;"
+          ATTRIB_VALUE_ENTITY_U: S++,
+          // <foo bar=&quot
+          CLOSE_TAG: S++,
+          // </a
+          CLOSE_TAG_SAW_WHITE: S++,
+          // </a   >
+          SCRIPT: S++,
+          // <script> ...
+          SCRIPT_ENDING: S++
+          // <script> ... <
+        };
+        sax2.XML_ENTITIES = Object.assign(/* @__PURE__ */ Object.create(null), {
+          amp: "&",
+          gt: ">",
+          lt: "<",
+          quot: '"',
+          apos: "'"
+        });
+        sax2.ENTITIES = Object.assign(/* @__PURE__ */ Object.create(null), {
+          amp: "&",
+          gt: ">",
+          lt: "<",
+          quot: '"',
+          apos: "'",
+          AElig: 198,
+          Aacute: 193,
+          Acirc: 194,
+          Agrave: 192,
+          Aring: 197,
+          Atilde: 195,
+          Auml: 196,
+          Ccedil: 199,
+          ETH: 208,
+          Eacute: 201,
+          Ecirc: 202,
+          Egrave: 200,
+          Euml: 203,
+          Iacute: 205,
+          Icirc: 206,
+          Igrave: 204,
+          Iuml: 207,
+          Ntilde: 209,
+          Oacute: 211,
+          Ocirc: 212,
+          Ograve: 210,
+          Oslash: 216,
+          Otilde: 213,
+          Ouml: 214,
+          THORN: 222,
+          Uacute: 218,
+          Ucirc: 219,
+          Ugrave: 217,
+          Uuml: 220,
+          Yacute: 221,
+          aacute: 225,
+          acirc: 226,
+          aelig: 230,
+          agrave: 224,
+          aring: 229,
+          atilde: 227,
+          auml: 228,
+          ccedil: 231,
+          eacute: 233,
+          ecirc: 234,
+          egrave: 232,
+          eth: 240,
+          euml: 235,
+          iacute: 237,
+          icirc: 238,
+          igrave: 236,
+          iuml: 239,
+          ntilde: 241,
+          oacute: 243,
+          ocirc: 244,
+          ograve: 242,
+          oslash: 248,
+          otilde: 245,
+          ouml: 246,
+          szlig: 223,
+          thorn: 254,
+          uacute: 250,
+          ucirc: 251,
+          ugrave: 249,
+          uuml: 252,
+          yacute: 253,
+          yuml: 255,
+          copy: 169,
+          reg: 174,
+          nbsp: 160,
+          iexcl: 161,
+          cent: 162,
+          pound: 163,
+          curren: 164,
+          yen: 165,
+          brvbar: 166,
+          sect: 167,
+          uml: 168,
+          ordf: 170,
+          laquo: 171,
+          not: 172,
+          shy: 173,
+          macr: 175,
+          deg: 176,
+          plusmn: 177,
+          sup1: 185,
+          sup2: 178,
+          sup3: 179,
+          acute: 180,
+          micro: 181,
+          para: 182,
+          middot: 183,
+          cedil: 184,
+          ordm: 186,
+          raquo: 187,
+          frac14: 188,
+          frac12: 189,
+          frac34: 190,
+          iquest: 191,
+          times: 215,
+          divide: 247,
+          OElig: 338,
+          oelig: 339,
+          Scaron: 352,
+          scaron: 353,
+          Yuml: 376,
+          fnof: 402,
+          circ: 710,
+          tilde: 732,
+          Alpha: 913,
+          Beta: 914,
+          Gamma: 915,
+          Delta: 916,
+          Epsilon: 917,
+          Zeta: 918,
+          Eta: 919,
+          Theta: 920,
+          Iota: 921,
+          Kappa: 922,
+          Lambda: 923,
+          Mu: 924,
+          Nu: 925,
+          Xi: 926,
+          Omicron: 927,
+          Pi: 928,
+          Rho: 929,
+          Sigma: 931,
+          Tau: 932,
+          Upsilon: 933,
+          Phi: 934,
+          Chi: 935,
+          Psi: 936,
+          Omega: 937,
+          alpha: 945,
+          beta: 946,
+          gamma: 947,
+          delta: 948,
+          epsilon: 949,
+          zeta: 950,
+          eta: 951,
+          theta: 952,
+          iota: 953,
+          kappa: 954,
+          lambda: 955,
+          mu: 956,
+          nu: 957,
+          xi: 958,
+          omicron: 959,
+          pi: 960,
+          rho: 961,
+          sigmaf: 962,
+          sigma: 963,
+          tau: 964,
+          upsilon: 965,
+          phi: 966,
+          chi: 967,
+          psi: 968,
+          omega: 969,
+          thetasym: 977,
+          upsih: 978,
+          piv: 982,
+          ensp: 8194,
+          emsp: 8195,
+          thinsp: 8201,
+          zwnj: 8204,
+          zwj: 8205,
+          lrm: 8206,
+          rlm: 8207,
+          ndash: 8211,
+          mdash: 8212,
+          lsquo: 8216,
+          rsquo: 8217,
+          sbquo: 8218,
+          ldquo: 8220,
+          rdquo: 8221,
+          bdquo: 8222,
+          dagger: 8224,
+          Dagger: 8225,
+          bull: 8226,
+          hellip: 8230,
+          permil: 8240,
+          prime: 8242,
+          Prime: 8243,
+          lsaquo: 8249,
+          rsaquo: 8250,
+          oline: 8254,
+          frasl: 8260,
+          euro: 8364,
+          image: 8465,
+          weierp: 8472,
+          real: 8476,
+          trade: 8482,
+          alefsym: 8501,
+          larr: 8592,
+          uarr: 8593,
+          rarr: 8594,
+          darr: 8595,
+          harr: 8596,
+          crarr: 8629,
+          lArr: 8656,
+          uArr: 8657,
+          rArr: 8658,
+          dArr: 8659,
+          hArr: 8660,
+          forall: 8704,
+          part: 8706,
+          exist: 8707,
+          empty: 8709,
+          nabla: 8711,
+          isin: 8712,
+          notin: 8713,
+          ni: 8715,
+          prod: 8719,
+          sum: 8721,
+          minus: 8722,
+          lowast: 8727,
+          radic: 8730,
+          prop: 8733,
+          infin: 8734,
+          ang: 8736,
+          and: 8743,
+          or: 8744,
+          cap: 8745,
+          cup: 8746,
+          int: 8747,
+          there4: 8756,
+          sim: 8764,
+          cong: 8773,
+          asymp: 8776,
+          ne: 8800,
+          equiv: 8801,
+          le: 8804,
+          ge: 8805,
+          sub: 8834,
+          sup: 8835,
+          nsub: 8836,
+          sube: 8838,
+          supe: 8839,
+          oplus: 8853,
+          otimes: 8855,
+          perp: 8869,
+          sdot: 8901,
+          lceil: 8968,
+          rceil: 8969,
+          lfloor: 8970,
+          rfloor: 8971,
+          lang: 9001,
+          rang: 9002,
+          loz: 9674,
+          spades: 9824,
+          clubs: 9827,
+          hearts: 9829,
+          diams: 9830
+        });
+        Object.keys(sax2.ENTITIES).forEach(function(key) {
+          var e = sax2.ENTITIES[key];
+          var s2 = typeof e === "number" ? String.fromCharCode(e) : e;
+          sax2.ENTITIES[key] = s2;
+        });
+        for (var s in sax2.STATE) {
+          sax2.STATE[sax2.STATE[s]] = s;
+        }
+        S = sax2.STATE;
+        function emit(parser, event, data) {
+          parser[event] && parser[event](data);
+        }
+        function getDeclaredEncoding(body) {
+          var match = body && body.match(/(?:^|\s)encoding\s*=\s*(['"])([^'"]+)\1/i);
+          return match ? match[2] : null;
+        }
+        function normalizeEncodingName(encoding) {
+          if (!encoding) {
+            return null;
+          }
+          return encoding.toLowerCase().replace(/[^a-z0-9]/g, "");
+        }
+        function encodingsMatch(detectedEncoding, declaredEncoding) {
+          const detected = normalizeEncodingName(detectedEncoding);
+          const declared = normalizeEncodingName(declaredEncoding);
+          if (!detected || !declared) {
+            return true;
+          }
+          if (declared === "utf16") {
+            return detected === "utf16le" || detected === "utf16be";
+          }
+          return detected === declared;
+        }
+        function validateXmlDeclarationEncoding(parser, data) {
+          if (!parser.strict || !parser.encoding || !data || data.name !== "xml") {
+            return;
+          }
+          var declaredEncoding = getDeclaredEncoding(data.body);
+          if (declaredEncoding && !encodingsMatch(parser.encoding, declaredEncoding)) {
+            strictFail(
+              parser,
+              "XML declaration encoding " + declaredEncoding + " does not match detected stream encoding " + parser.encoding.toUpperCase()
+            );
+          }
+        }
+        function emitNode(parser, nodeType, data) {
+          if (parser.textNode) closeText(parser);
+          emit(parser, nodeType, data);
+        }
+        function closeText(parser) {
+          parser.textNode = textopts(parser.opt, parser.textNode);
+          if (parser.textNode) emit(parser, "ontext", parser.textNode);
+          parser.textNode = "";
+        }
+        function textopts(opt, text) {
+          if (opt.trim) text = text.trim();
+          if (opt.normalize) text = text.replace(/\s+/g, " ");
+          return text;
+        }
+        function error(parser, er) {
+          closeText(parser);
+          if (parser.trackPosition) {
+            er += "\nLine: " + parser.line + "\nColumn: " + parser.column + "\nChar: " + parser.c;
+          }
+          er = new Error(er);
+          parser.error = er;
+          emit(parser, "onerror", er);
+          return parser;
+        }
+        function end(parser) {
+          if (parser.sawRoot && !parser.closedRoot)
+            strictFail(parser, "Unclosed root tag");
+          if (parser.state !== S.BEGIN && parser.state !== S.BEGIN_WHITESPACE && parser.state !== S.TEXT) {
+            error(parser, "Unexpected end");
+          }
+          closeText(parser);
+          parser.c = "";
+          parser.closed = true;
+          emit(parser, "onend");
+          SAXParser.call(parser, parser.strict, parser.opt);
+          return parser;
+        }
+        function strictFail(parser, message2) {
+          if (typeof parser !== "object" || !(parser instanceof SAXParser)) {
+            throw new Error("bad call to strictFail");
+          }
+          if (parser.strict) {
+            error(parser, message2);
+          }
+        }
+        function newTag(parser) {
+          if (!parser.strict) parser.tagName = parser.tagName[parser.looseCase]();
+          var parent = parser.tags[parser.tags.length - 1] || parser;
+          var tag = parser.tag = { name: parser.tagName, attributes: {} };
+          if (parser.opt.xmlns) {
+            tag.ns = parent.ns;
+          }
+          parser.attribList.length = 0;
+          emitNode(parser, "onopentagstart", tag);
+        }
+        function qname(name, attribute) {
+          var i = name.indexOf(":");
+          var qualName = i < 0 ? ["", name] : name.split(":");
+          var prefix = qualName[0];
+          var local = qualName[1];
+          if (attribute && name === "xmlns") {
+            prefix = "xmlns";
+            local = "";
+          }
+          return { prefix, local };
+        }
+        function attrib(parser) {
+          if (!parser.strict) {
+            parser.attribName = parser.attribName[parser.looseCase]();
+          }
+          if (parser.attribList.indexOf(parser.attribName) !== -1 || parser.tag.attributes.hasOwnProperty(parser.attribName)) {
+            parser.attribName = parser.attribValue = "";
+            return;
+          }
+          if (parser.opt.xmlns) {
+            var qn = qname(parser.attribName, true);
+            var prefix = qn.prefix;
+            var local = qn.local;
+            if (prefix === "xmlns") {
+              if (local === "xml" && parser.attribValue !== XML_NAMESPACE) {
+                strictFail(
+                  parser,
+                  "xml: prefix must be bound to " + XML_NAMESPACE + "\nActual: " + parser.attribValue
+                );
+              } else if (local === "xmlns" && parser.attribValue !== XMLNS_NAMESPACE) {
+                strictFail(
+                  parser,
+                  "xmlns: prefix must be bound to " + XMLNS_NAMESPACE + "\nActual: " + parser.attribValue
+                );
+              } else {
+                var tag = parser.tag;
+                var parent = parser.tags[parser.tags.length - 1] || parser;
+                if (tag.ns === parent.ns) {
+                  tag.ns = Object.create(parent.ns);
+                }
+                tag.ns[local] = parser.attribValue;
+              }
+            }
+            parser.attribList.push([parser.attribName, parser.attribValue]);
+          } else {
+            parser.tag.attributes[parser.attribName] = parser.attribValue;
+            emitNode(parser, "onattribute", {
+              name: parser.attribName,
+              value: parser.attribValue
+            });
+          }
+          parser.attribName = parser.attribValue = "";
+        }
+        function openTag(parser, selfClosing) {
+          if (parser.opt.xmlns) {
+            var tag = parser.tag;
+            var qn = qname(parser.tagName);
+            tag.prefix = qn.prefix;
+            tag.local = qn.local;
+            tag.uri = tag.ns[qn.prefix] || "";
+            if (tag.prefix && !tag.uri) {
+              strictFail(
+                parser,
+                "Unbound namespace prefix: " + JSON.stringify(parser.tagName)
+              );
+              tag.uri = qn.prefix;
+            }
+            var parent = parser.tags[parser.tags.length - 1] || parser;
+            if (tag.ns && parent.ns !== tag.ns) {
+              Object.keys(tag.ns).forEach(function(p) {
+                emitNode(parser, "onopennamespace", {
+                  prefix: p,
+                  uri: tag.ns[p]
+                });
+              });
+            }
+            for (var i = 0, l = parser.attribList.length; i < l; i++) {
+              var nv = parser.attribList[i];
+              var name = nv[0];
+              var value = nv[1];
+              var qualName = qname(name, true);
+              var prefix = qualName.prefix;
+              var local = qualName.local;
+              var uri = prefix === "" ? "" : tag.ns[prefix] || "";
+              var a = {
+                name,
+                value,
+                prefix,
+                local,
+                uri
+              };
+              if (prefix && prefix !== "xmlns" && !uri) {
+                strictFail(
+                  parser,
+                  "Unbound namespace prefix: " + JSON.stringify(prefix)
+                );
+                a.uri = prefix;
+              }
+              parser.tag.attributes[name] = a;
+              emitNode(parser, "onattribute", a);
+            }
+            parser.attribList.length = 0;
+          }
+          parser.tag.isSelfClosing = !!selfClosing;
+          parser.sawRoot = true;
+          parser.tags.push(parser.tag);
+          emitNode(parser, "onopentag", parser.tag);
+          if (!selfClosing) {
+            if (!parser.noscript && parser.tagName.toLowerCase() === "script") {
+              parser.state = S.SCRIPT;
+            } else {
+              parser.state = S.TEXT;
+            }
+            parser.tag = null;
+            parser.tagName = "";
+          }
+          parser.attribName = parser.attribValue = "";
+          parser.attribList.length = 0;
+        }
+        function closeTag(parser) {
+          if (!parser.tagName) {
+            strictFail(parser, "Weird empty close tag.");
+            parser.textNode += "</>";
+            parser.state = S.TEXT;
+            return;
+          }
+          if (parser.script) {
+            if (parser.tagName !== "script") {
+              parser.script += "</" + parser.tagName + ">";
+              parser.tagName = "";
+              parser.state = S.SCRIPT;
+              return;
+            }
+            emitNode(parser, "onscript", parser.script);
+            parser.script = "";
+          }
+          var t = parser.tags.length;
+          var tagName = parser.tagName;
+          if (!parser.strict) {
+            tagName = tagName[parser.looseCase]();
+          }
+          var closeTo = tagName;
+          while (t--) {
+            var close = parser.tags[t];
+            if (close.name !== closeTo) {
+              strictFail(parser, "Unexpected close tag");
+            } else {
+              break;
+            }
+          }
+          if (t < 0) {
+            strictFail(parser, "Unmatched closing tag: " + parser.tagName);
+            parser.textNode += "</" + parser.tagName + ">";
+            parser.state = S.TEXT;
+            return;
+          }
+          parser.tagName = tagName;
+          var s2 = parser.tags.length;
+          while (s2-- > t) {
+            var tag = parser.tag = parser.tags.pop();
+            parser.tagName = parser.tag.name;
+            emitNode(parser, "onclosetag", parser.tagName);
+            var x = {};
+            for (var i in tag.ns) {
+              x[i] = tag.ns[i];
+            }
+            var parent = parser.tags[parser.tags.length - 1] || parser;
+            if (parser.opt.xmlns && tag.ns !== parent.ns) {
+              Object.keys(tag.ns).forEach(function(p) {
+                var n = tag.ns[p];
+                emitNode(parser, "onclosenamespace", { prefix: p, uri: n });
+              });
+            }
+          }
+          if (t === 0) parser.closedRoot = true;
+          parser.tagName = parser.attribValue = parser.attribName = "";
+          parser.attribList.length = 0;
+          parser.state = S.TEXT;
+        }
+        function parseEntity(parser) {
+          var entity = parser.entity;
+          var entityLC = entity.toLowerCase();
+          var num;
+          var numStr = "";
+          if (parser.ENTITIES[entity]) {
+            return parser.ENTITIES[entity];
+          }
+          if (parser.ENTITIES[entityLC]) {
+            return parser.ENTITIES[entityLC];
+          }
+          entity = entityLC;
+          if (entity.charAt(0) === "#") {
+            if (entity.charAt(1) === "x") {
+              entity = entity.slice(2);
+              num = parseInt(entity, 16);
+              numStr = num.toString(16);
+            } else {
+              entity = entity.slice(1);
+              num = parseInt(entity, 10);
+              numStr = num.toString(10);
+            }
+          }
+          entity = entity.replace(/^0+/, "");
+          if (isNaN(num) || numStr.toLowerCase() !== entity || num < 0 || num > 1114111 || !isXmlChar(num)) {
+            strictFail(parser, "Invalid character entity");
+            return "&" + parser.entity + ";";
+          }
+          return String.fromCodePoint(num);
+        }
+        function isXmlChar(num) {
+          return num === 9 || num === 10 || num === 13 || num >= 32 && num <= 55295 || num >= 57344 && num <= 65533 || num >= 65536 && num <= 1114111;
+        }
+        function beginWhiteSpace(parser, c) {
+          if (c === "<") {
+            parser.state = S.OPEN_WAKA;
+            parser.startTagPosition = parser.position;
+          } else if (!isWhitespace(c)) {
+            strictFail(parser, "Non-whitespace before first tag.");
+            parser.textNode = c;
+            parser.state = S.TEXT;
+          }
+        }
+        function charAt(chunk, i) {
+          var result = "";
+          if (i < chunk.length) {
+            result = chunk.charAt(i);
+          }
+          return result;
+        }
+        function write(chunk) {
+          var parser = this;
+          if (this.error) {
+            throw this.error;
+          }
+          if (parser.closed) {
+            return error(
+              parser,
+              "Cannot write after close. Assign an onready handler."
+            );
+          }
+          if (chunk === null) {
+            return end(parser);
+          }
+          if (typeof chunk === "object") {
+            chunk = chunk.toString();
+          }
+          var i = 0;
+          var c = "";
+          while (true) {
+            c = charAt(chunk, i++);
+            parser.c = c;
+            if (!c) {
+              break;
+            }
+            if (parser.trackPosition) {
+              parser.position++;
+              if (c === "\n") {
+                parser.line++;
+                parser.column = 0;
+              } else {
+                parser.column++;
+              }
+            }
+            switch (parser.state) {
+              case S.BEGIN:
+                parser.state = S.BEGIN_WHITESPACE;
+                if (c === "\uFEFF") {
+                  continue;
+                }
+                beginWhiteSpace(parser, c);
+                continue;
+              case S.BEGIN_WHITESPACE:
+                beginWhiteSpace(parser, c);
+                continue;
+              case S.TEXT:
+                if (parser.sawRoot && !parser.closedRoot) {
+                  var starti = i - 1;
+                  while (c && c !== "<" && c !== "&") {
+                    c = charAt(chunk, i++);
+                    if (c && parser.trackPosition) {
+                      parser.position++;
+                      if (c === "\n") {
+                        parser.line++;
+                        parser.column = 0;
+                      } else {
+                        parser.column++;
+                      }
+                    }
+                  }
+                  parser.textNode += chunk.substring(starti, i - 1);
+                }
+                if (c === "<" && !(parser.sawRoot && parser.closedRoot && !parser.strict)) {
+                  parser.state = S.OPEN_WAKA;
+                  parser.startTagPosition = parser.position;
+                } else {
+                  if (!isWhitespace(c) && (!parser.sawRoot || parser.closedRoot)) {
+                    strictFail(parser, "Text data outside of root node.");
+                  }
+                  if (c === "&") {
+                    parser.state = S.TEXT_ENTITY;
+                  } else {
+                    parser.textNode += c;
+                  }
+                }
+                continue;
+              case S.SCRIPT:
+                if (c === "<") {
+                  parser.state = S.SCRIPT_ENDING;
+                } else {
+                  parser.script += c;
+                }
+                continue;
+              case S.SCRIPT_ENDING:
+                if (c === "/") {
+                  parser.state = S.CLOSE_TAG;
+                } else {
+                  parser.script += "<" + c;
+                  parser.state = S.SCRIPT;
+                }
+                continue;
+              case S.OPEN_WAKA:
+                if (c === "!") {
+                  parser.state = S.SGML_DECL;
+                  parser.sgmlDecl = "";
+                } else if (isWhitespace(c)) {
+                } else if (isMatch(nameStart, c)) {
+                  parser.state = S.OPEN_TAG;
+                  parser.tagName = c;
+                } else if (c === "/") {
+                  parser.state = S.CLOSE_TAG;
+                  parser.tagName = "";
+                } else if (c === "?") {
+                  parser.state = S.PROC_INST;
+                  parser.procInstName = parser.procInstBody = "";
+                } else {
+                  strictFail(parser, "Unencoded <");
+                  if (parser.startTagPosition + 1 < parser.position) {
+                    var pad = parser.position - parser.startTagPosition;
+                    c = new Array(pad).join(" ") + c;
+                  }
+                  parser.textNode += "<" + c;
+                  parser.state = S.TEXT;
+                }
+                continue;
+              case S.SGML_DECL:
+                if (parser.sgmlDecl + c === "--") {
+                  parser.state = S.COMMENT;
+                  parser.comment = "";
+                  parser.sgmlDecl = "";
+                  continue;
+                }
+                if (parser.doctype && parser.doctype !== true && parser.sgmlDecl) {
+                  parser.state = S.DOCTYPE_DTD;
+                  parser.doctype += "<!" + parser.sgmlDecl + c;
+                  parser.sgmlDecl = "";
+                } else if (CDATAre.test(parser.sgmlDecl + c)) {
+                  emitNode(parser, "onopencdata");
+                  parser.state = S.CDATA;
+                  parser.sgmlDecl = "";
+                  parser.cdata = "";
+                } else if (DOCTYPEre.test(parser.sgmlDecl + c)) {
+                  parser.state = S.DOCTYPE;
+                  if (parser.doctype || parser.sawRoot) {
+                    strictFail(
+                      parser,
+                      "Inappropriately located doctype declaration"
+                    );
+                  }
+                  parser.doctype = "";
+                  parser.sgmlDecl = "";
+                } else if (c === ">") {
+                  emitNode(parser, "onsgmldeclaration", parser.sgmlDecl);
+                  parser.sgmlDecl = "";
+                  parser.state = S.TEXT;
+                } else if (isQuote(c)) {
+                  parser.state = S.SGML_DECL_QUOTED;
+                  parser.sgmlDecl += c;
+                } else {
+                  parser.sgmlDecl += c;
+                }
+                continue;
+              case S.SGML_DECL_QUOTED:
+                if (c === parser.q) {
+                  parser.state = S.SGML_DECL;
+                  parser.q = "";
+                }
+                parser.sgmlDecl += c;
+                continue;
+              case S.DOCTYPE:
+                if (c === ">") {
+                  parser.state = S.TEXT;
+                  emitNode(parser, "ondoctype", parser.doctype);
+                  parser.doctype = true;
+                } else {
+                  parser.doctype += c;
+                  if (c === "[") {
+                    parser.state = S.DOCTYPE_DTD;
+                  } else if (isQuote(c)) {
+                    parser.state = S.DOCTYPE_QUOTED;
+                    parser.q = c;
+                  }
+                }
+                continue;
+              case S.DOCTYPE_QUOTED:
+                parser.doctype += c;
+                if (c === parser.q) {
+                  parser.q = "";
+                  parser.state = S.DOCTYPE;
+                }
+                continue;
+              case S.DOCTYPE_DTD:
+                if (c === "]") {
+                  parser.doctype += c;
+                  parser.state = S.DOCTYPE;
+                } else if (c === "<") {
+                  parser.state = S.OPEN_WAKA;
+                  parser.startTagPosition = parser.position;
+                } else if (isQuote(c)) {
+                  parser.doctype += c;
+                  parser.state = S.DOCTYPE_DTD_QUOTED;
+                  parser.q = c;
+                } else {
+                  parser.doctype += c;
+                }
+                continue;
+              case S.DOCTYPE_DTD_QUOTED:
+                parser.doctype += c;
+                if (c === parser.q) {
+                  parser.state = S.DOCTYPE_DTD;
+                  parser.q = "";
+                }
+                continue;
+              case S.COMMENT:
+                if (c === "-") {
+                  parser.state = S.COMMENT_ENDING;
+                } else {
+                  parser.comment += c;
+                }
+                continue;
+              case S.COMMENT_ENDING:
+                if (c === "-") {
+                  parser.state = S.COMMENT_ENDED;
+                  parser.comment = textopts(parser.opt, parser.comment);
+                  if (parser.comment) {
+                    emitNode(parser, "oncomment", parser.comment);
+                  }
+                  parser.comment = "";
+                } else {
+                  parser.comment += "-" + c;
+                  parser.state = S.COMMENT;
+                }
+                continue;
+              case S.COMMENT_ENDED:
+                if (c !== ">") {
+                  strictFail(parser, "Malformed comment");
+                  parser.comment += "--" + c;
+                  parser.state = S.COMMENT;
+                } else if (parser.doctype && parser.doctype !== true) {
+                  parser.state = S.DOCTYPE_DTD;
+                } else {
+                  parser.state = S.TEXT;
+                }
+                continue;
+              case S.CDATA:
+                var starti = i - 1;
+                while (c && c !== "]") {
+                  c = charAt(chunk, i++);
+                  if (c && parser.trackPosition) {
+                    parser.position++;
+                    if (c === "\n") {
+                      parser.line++;
+                      parser.column = 0;
+                    } else {
+                      parser.column++;
+                    }
+                  }
+                }
+                parser.cdata += chunk.substring(starti, i - 1);
+                if (c === "]") {
+                  parser.state = S.CDATA_ENDING;
+                }
+                continue;
+              case S.CDATA_ENDING:
+                if (c === "]") {
+                  parser.state = S.CDATA_ENDING_2;
+                } else {
+                  parser.cdata += "]" + c;
+                  parser.state = S.CDATA;
+                }
+                continue;
+              case S.CDATA_ENDING_2:
+                if (c === ">") {
+                  if (parser.cdata) {
+                    emitNode(parser, "oncdata", parser.cdata);
+                  }
+                  emitNode(parser, "onclosecdata");
+                  parser.cdata = "";
+                  parser.state = S.TEXT;
+                } else if (c === "]") {
+                  parser.cdata += "]";
+                } else {
+                  parser.cdata += "]]" + c;
+                  parser.state = S.CDATA;
+                }
+                continue;
+              case S.PROC_INST:
+                if (c === "?") {
+                  parser.state = S.PROC_INST_ENDING;
+                } else if (isWhitespace(c)) {
+                  parser.state = S.PROC_INST_BODY;
+                } else {
+                  parser.procInstName += c;
+                }
+                continue;
+              case S.PROC_INST_BODY:
+                if (!parser.procInstBody && isWhitespace(c)) {
+                  continue;
+                } else if (c === "?") {
+                  parser.state = S.PROC_INST_ENDING;
+                } else {
+                  parser.procInstBody += c;
+                }
+                continue;
+              case S.PROC_INST_ENDING:
+                if (c === ">") {
+                  const procInstEndData = {
+                    name: parser.procInstName,
+                    body: parser.procInstBody
+                  };
+                  validateXmlDeclarationEncoding(parser, procInstEndData);
+                  emitNode(parser, "onprocessinginstruction", procInstEndData);
+                  parser.procInstName = parser.procInstBody = "";
+                  parser.state = S.TEXT;
+                } else {
+                  parser.procInstBody += "?" + c;
+                  parser.state = S.PROC_INST_BODY;
+                }
+                continue;
+              case S.OPEN_TAG:
+                if (isMatch(nameBody, c)) {
+                  parser.tagName += c;
+                } else {
+                  newTag(parser);
+                  if (c === ">") {
+                    openTag(parser);
+                  } else if (c === "/") {
+                    parser.state = S.OPEN_TAG_SLASH;
+                  } else {
+                    if (!isWhitespace(c)) {
+                      strictFail(parser, "Invalid character in tag name");
+                    }
+                    parser.state = S.ATTRIB;
+                  }
+                }
+                continue;
+              case S.OPEN_TAG_SLASH:
+                if (c === ">") {
+                  openTag(parser, true);
+                  closeTag(parser);
+                } else {
+                  strictFail(
+                    parser,
+                    "Forward-slash in opening tag not followed by >"
+                  );
+                  parser.state = S.ATTRIB;
+                }
+                continue;
+              case S.ATTRIB:
+                if (isWhitespace(c)) {
+                  continue;
+                } else if (c === ">") {
+                  openTag(parser);
+                } else if (c === "/") {
+                  parser.state = S.OPEN_TAG_SLASH;
+                } else if (isMatch(nameStart, c)) {
+                  parser.attribName = c;
+                  parser.attribValue = "";
+                  parser.state = S.ATTRIB_NAME;
+                } else {
+                  strictFail(parser, "Invalid attribute name");
+                }
+                continue;
+              case S.ATTRIB_NAME:
+                if (c === "=") {
+                  parser.state = S.ATTRIB_VALUE;
+                } else if (c === ">") {
+                  strictFail(parser, "Attribute without value");
+                  parser.attribValue = parser.attribName;
+                  attrib(parser);
+                  openTag(parser);
+                } else if (isWhitespace(c)) {
+                  parser.state = S.ATTRIB_NAME_SAW_WHITE;
+                } else if (isMatch(nameBody, c)) {
+                  parser.attribName += c;
+                } else {
+                  strictFail(parser, "Invalid attribute name");
+                }
+                continue;
+              case S.ATTRIB_NAME_SAW_WHITE:
+                if (c === "=") {
+                  parser.state = S.ATTRIB_VALUE;
+                } else if (isWhitespace(c)) {
+                  continue;
+                } else {
+                  strictFail(parser, "Attribute without value");
+                  parser.tag.attributes[parser.attribName] = "";
+                  parser.attribValue = "";
+                  emitNode(parser, "onattribute", {
+                    name: parser.attribName,
+                    value: ""
+                  });
+                  parser.attribName = "";
+                  if (c === ">") {
+                    openTag(parser);
+                  } else if (isMatch(nameStart, c)) {
+                    parser.attribName = c;
+                    parser.state = S.ATTRIB_NAME;
+                  } else {
+                    strictFail(parser, "Invalid attribute name");
+                    parser.state = S.ATTRIB;
+                  }
+                }
+                continue;
+              case S.ATTRIB_VALUE:
+                if (isWhitespace(c)) {
+                  continue;
+                } else if (isQuote(c)) {
+                  parser.q = c;
+                  parser.state = S.ATTRIB_VALUE_QUOTED;
+                } else {
+                  if (!parser.opt.unquotedAttributeValues) {
+                    error(parser, "Unquoted attribute value");
+                  }
+                  parser.state = S.ATTRIB_VALUE_UNQUOTED;
+                  parser.attribValue = c;
+                }
+                continue;
+              case S.ATTRIB_VALUE_QUOTED:
+                if (c !== parser.q) {
+                  if (c === "&") {
+                    parser.state = S.ATTRIB_VALUE_ENTITY_Q;
+                  } else {
+                    parser.attribValue += c;
+                  }
+                  continue;
+                }
+                attrib(parser);
+                parser.q = "";
+                parser.state = S.ATTRIB_VALUE_CLOSED;
+                continue;
+              case S.ATTRIB_VALUE_CLOSED:
+                if (isWhitespace(c)) {
+                  parser.state = S.ATTRIB;
+                } else if (c === ">") {
+                  openTag(parser);
+                } else if (c === "/") {
+                  parser.state = S.OPEN_TAG_SLASH;
+                } else if (isMatch(nameStart, c)) {
+                  strictFail(parser, "No whitespace between attributes");
+                  parser.attribName = c;
+                  parser.attribValue = "";
+                  parser.state = S.ATTRIB_NAME;
+                } else {
+                  strictFail(parser, "Invalid attribute name");
+                }
+                continue;
+              case S.ATTRIB_VALUE_UNQUOTED:
+                if (!isAttribEnd(c)) {
+                  if (c === "&") {
+                    parser.state = S.ATTRIB_VALUE_ENTITY_U;
+                  } else {
+                    parser.attribValue += c;
+                  }
+                  continue;
+                }
+                attrib(parser);
+                if (c === ">") {
+                  openTag(parser);
+                } else {
+                  parser.state = S.ATTRIB;
+                }
+                continue;
+              case S.CLOSE_TAG:
+                if (!parser.tagName) {
+                  if (isWhitespace(c)) {
+                    continue;
+                  } else if (notMatch(nameStart, c)) {
+                    if (parser.script) {
+                      parser.script += "</" + c;
+                      parser.state = S.SCRIPT;
+                    } else {
+                      strictFail(parser, "Invalid tagname in closing tag.");
+                    }
+                  } else {
+                    parser.tagName = c;
+                  }
+                } else if (c === ">") {
+                  closeTag(parser);
+                } else if (isMatch(nameBody, c)) {
+                  parser.tagName += c;
+                } else if (parser.script) {
+                  parser.script += "</" + parser.tagName + c;
+                  parser.tagName = "";
+                  parser.state = S.SCRIPT;
+                } else {
+                  if (!isWhitespace(c)) {
+                    strictFail(parser, "Invalid tagname in closing tag");
+                  }
+                  parser.state = S.CLOSE_TAG_SAW_WHITE;
+                }
+                continue;
+              case S.CLOSE_TAG_SAW_WHITE:
+                if (isWhitespace(c)) {
+                  continue;
+                }
+                if (c === ">") {
+                  closeTag(parser);
+                } else {
+                  strictFail(parser, "Invalid characters in closing tag");
+                }
+                continue;
+              case S.TEXT_ENTITY:
+              case S.ATTRIB_VALUE_ENTITY_Q:
+              case S.ATTRIB_VALUE_ENTITY_U:
+                var returnState;
+                var buffer;
+                switch (parser.state) {
+                  case S.TEXT_ENTITY:
+                    returnState = S.TEXT;
+                    buffer = "textNode";
+                    break;
+                  case S.ATTRIB_VALUE_ENTITY_Q:
+                    returnState = S.ATTRIB_VALUE_QUOTED;
+                    buffer = "attribValue";
+                    break;
+                  case S.ATTRIB_VALUE_ENTITY_U:
+                    returnState = S.ATTRIB_VALUE_UNQUOTED;
+                    buffer = "attribValue";
+                    break;
+                }
+                if (c === ";") {
+                  var parsedEntity = parseEntity(parser);
+                  if (parser.opt.unparsedEntities && !Object.values(sax2.XML_ENTITIES).includes(parsedEntity)) {
+                    if ((parser.entityCount += 1) > parser.opt.maxEntityCount) {
+                      error(
+                        parser,
+                        "Parsed entity count exceeds max entity count"
+                      );
+                    }
+                    if ((parser.entityDepth += 1) > parser.opt.maxEntityDepth) {
+                      error(
+                        parser,
+                        "Parsed entity depth exceeds max entity depth"
+                      );
+                    }
+                    parser.entity = "";
+                    parser.state = returnState;
+                    parser.write(parsedEntity);
+                    parser.entityDepth -= 1;
+                  } else {
+                    parser[buffer] += parsedEntity;
+                    parser.entity = "";
+                    parser.state = returnState;
+                  }
+                } else if (isMatch(parser.entity.length ? entityBody : entityStart, c)) {
+                  parser.entity += c;
+                } else {
+                  strictFail(parser, "Invalid character in entity name");
+                  parser[buffer] += "&" + parser.entity + c;
+                  parser.entity = "";
+                  parser.state = returnState;
+                }
+                continue;
+              default: {
+                throw new Error(parser, "Unknown state: " + parser.state);
+              }
+            }
+          }
+          if (parser.position >= parser.bufferCheckPosition) {
+            checkBufferLength(parser);
+          }
+          return parser;
+        }
+        /*! http://mths.be/fromcodepoint v0.1.0 by @mathias */
+        if (!String.fromCodePoint) {
+          ;
+          (function() {
+            var stringFromCharCode = String.fromCharCode;
+            var floor = Math.floor;
+            var fromCodePoint = function() {
+              var MAX_SIZE = 16384;
+              var codeUnits = [];
+              var highSurrogate;
+              var lowSurrogate;
+              var index = -1;
+              var length = arguments.length;
+              if (!length) {
+                return "";
+              }
+              var result = "";
+              while (++index < length) {
+                var codePoint = Number(arguments[index]);
+                if (!isFinite(codePoint) || // `NaN`, `+Infinity`, or `-Infinity`
+                codePoint < 0 || // not a valid Unicode code point
+                codePoint > 1114111 || // not a valid Unicode code point
+                floor(codePoint) !== codePoint) {
+                  throw RangeError("Invalid code point: " + codePoint);
+                }
+                if (codePoint <= 65535) {
+                  codeUnits.push(codePoint);
+                } else {
+                  codePoint -= 65536;
+                  highSurrogate = (codePoint >> 10) + 55296;
+                  lowSurrogate = codePoint % 1024 + 56320;
+                  codeUnits.push(highSurrogate, lowSurrogate);
+                }
+                if (index + 1 === length || codeUnits.length > MAX_SIZE) {
+                  result += stringFromCharCode.apply(null, codeUnits);
+                  codeUnits.length = 0;
+                }
+              }
+              return result;
+            };
+            if (Object.defineProperty) {
+              Object.defineProperty(String, "fromCodePoint", {
+                value: fromCodePoint,
+                configurable: true,
+                writable: true
+              });
+            } else {
+              String.fromCodePoint = fromCodePoint;
+            }
+          })();
+        }
+      })(typeof exports === "undefined" ? exports.sax = {} : exports);
+    }
+  });
+
+  // src/xml.mjs
+  var import_sax = __toESM(require_sax(), 1);
+  var FrameError = class extends Error {
+    constructor(code, message2) {
+      super(message2);
+      this.name = "FrameError";
+      this.code = code;
+    }
+  };
+  var fail = (code, message2) => {
+    throw new FrameError(code, message2);
+  };
+  var LIMITS = Object.freeze({ bytes: 16 * 1024 * 1024, elements: 2e5, depth: 64, selected: 32, chars: 3e3, runs: 128, packetBytes: 2 * 1024 * 1024 });
+  var enc = new TextEncoder();
+  function utf8(input) {
+    if (typeof input === "string") {
+      if (input.length > LIMITS.bytes || enc.encode(input).length > LIMITS.bytes) fail("size", "SLA exceeds 16 MiB");
+      if (/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/u.test(input)) fail("encoding", "Unpaired Unicode surrogate");
+      return input;
+    }
+    const bytes = input instanceof Uint8Array ? input : new Uint8Array(input);
+    if (bytes.byteLength > LIMITS.bytes) fail("size", "SLA exceeds 16 MiB");
+    try {
+      return new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(bytes);
+    } catch {
+      fail("encoding", "SLA must be uncompressed UTF-8");
+    }
+  }
+  function xmlChar(cp) {
+    return cp === 9 || cp === 10 || cp === 13 || cp >= 32 && cp <= 55295 || cp >= 57344 && cp <= 65533 || cp >= 65536 && cp <= 1114111;
+  }
+  function decodeAttr(raw) {
+    if (raw.includes("<")) fail("xml", "Literal < in XML attribute");
+    let text = raw.replace(/\r\n/g, "\n").replace(/[\t\r\n]/g, " ");
+    text = text.replace(/&([^;]*);|&/g, (all, entity) => {
+      const fixed = { amp: "&", lt: "<", gt: ">", quot: '"', apos: "'" };
+      if (Object.hasOwn(fixed, entity)) return fixed[entity];
+      if (!/^#(?:[0-9]+|x[0-9a-fA-F]+)$/.test(entity ?? "")) fail("xml", "Unsupported or malformed entity");
+      const cp = entity[1] === "x" ? parseInt(entity.slice(2), 16) : parseInt(entity.slice(1), 10);
+      if (!xmlChar(cp)) fail("xml", "Illegal XML character");
+      return String.fromCodePoint(cp);
+    });
+    for (const c of text) if (!xmlChar(c.codePointAt(0))) fail("xml", "Illegal XML character");
+    return text;
+  }
+  function escapeAttr(text, quote) {
+    return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(quote === "'" ? /'/g : /"/g, quote === "'" ? "&apos;" : "&quot;");
+  }
+  function parseXml(input) {
+    const raw = utf8(input);
+    if (/<!DOCTYPE|<!ENTITY|<!\[CDATA\[/i.test(raw)) fail("xml", "DTD, entities and CDATA are outside this profile");
+    for (const c of raw) if (!xmlChar(c.codePointAt(0))) fail("xml", "Illegal XML character");
+    const declaration = raw.match(/^\uFEFF?<\?xml[ \t\r\n]+[^?]*\?>/);
+    if (declaration) {
+      const decl = declaration[0].replace(/^\uFEFF/, "");
+      const grammar = /^<\?xml[ \t\r\n]+version[ \t\r\n]*=[ \t\r\n]*(?:"1\.0"|'1\.0')(?:[ \t\r\n]+encoding[ \t\r\n]*=[ \t\r\n]*(?:"[Uu][Tt][Ff]-8"|'[Uu][Tt][Ff]-8'))?(?:[ \t\r\n]+standalone[ \t\r\n]*=[ \t\r\n]*(?:"(?:yes|no)"|'(?:yes|no)'))?[ \t\r\n]*\?>$/;
+      if (!grammar.test(decl)) fail("encoding", "Only an XML 1.0 UTF-8 declaration is supported");
+    }
+    try {
+      const parser = import_sax.default.parser(true, { strictEntities: true, xmlns: false, trim: false, normalize: false });
+      let depth = 0, count = 0;
+      parser.onopentag = () => {
+        if (++depth > LIMITS.depth || ++count > LIMITS.elements) fail("size", "XML resource limit exceeded");
+      };
+      parser.onclosetag = () => {
+        depth--;
+      };
+      parser.write(raw).close();
+    } catch {
+      fail("xml", "Malformed XML");
+    }
+    const roots = [], nodes = [], stack = [];
+    let pos = raw.charCodeAt(0) === 65279 ? 1 : 0;
+    while (pos < raw.length) {
+      if (raw[pos] !== "<") {
+        const end = raw.indexOf("<", pos), stop = end < 0 ? raw.length : end;
+        if (/[^ \t\r\n]/.test(raw.slice(pos, stop))) fail("xml", "Element text is outside the SLA profile");
+        pos = stop;
+        continue;
+      }
+      if (raw.startsWith("<!--", pos)) {
+        const end = raw.indexOf("-->", pos + 4);
+        if (end < 0) fail("xml", "Unclosed comment");
+        pos = end + 3;
+        continue;
+      }
+      if (raw.startsWith("<?", pos)) {
+        const end = raw.indexOf("?>", pos + 2);
+        if (pos !== (raw.charCodeAt(0) === 65279 ? 1 : 0) || !declaration || end < 0) fail("xml", "Only the initial XML declaration is allowed");
+        pos = end + 2;
+        continue;
+      }
+      if (raw.startsWith("</", pos)) {
+        const match = /^<\/([A-Za-z_][A-Za-z0-9_.-]*)[ \t\r\n]*>/.exec(raw.slice(pos));
+        if (!match || !stack.length || stack.at(-1).tag !== match[1]) fail("xml", "Invalid end tag");
+        stack.pop().end = pos + match[0].length;
+        pos += match[0].length;
+        continue;
+      }
+      const start = pos, name = /^<([A-Za-z_][A-Za-z0-9_.-]*)/.exec(raw.slice(pos));
+      if (!name) fail("xml", "Unsupported XML element name");
+      pos += name[0].length;
+      const node2 = { tag: name[1], attrs: /* @__PURE__ */ Object.create(null), attrRanges: /* @__PURE__ */ Object.create(null), children: [], parent: stack.at(-1) ?? null, start };
+      while (true) {
+        const ws = /^[ \t\r\n]*/.exec(raw.slice(pos))[0];
+        pos += ws.length;
+        if (raw.startsWith("/>", pos) || raw[pos] === ">") break;
+        if (!ws.length) fail("xml", "Attributes require whitespace");
+        const attr = /^([A-Za-z_][A-Za-z0-9_.-]*)[ \t\r\n]*=[ \t\r\n]*(['"])/.exec(raw.slice(pos));
+        if (!attr || attr[1] === "xmlns" || Object.hasOwn(node2.attrs, attr[1])) fail("xml", "Unsupported, duplicate or namespace attribute");
+        pos += attr[0].length;
+        const valueStart = pos, valueEnd = raw.indexOf(attr[2], pos);
+        if (valueEnd < 0) fail("xml", "Unclosed attribute");
+        node2.attrs[attr[1]] = decodeAttr(raw.slice(valueStart, valueEnd));
+        node2.attrRanges[attr[1]] = { start: valueStart, end: valueEnd, quote: attr[2] };
+        pos = valueEnd + 1;
+      }
+      const selfClosing = raw.startsWith("/>", pos);
+      pos += selfClosing ? 2 : 1;
+      node2.openEnd = pos;
+      nodes.push(node2);
+      if (nodes.length > LIMITS.elements) fail("size", "Too many XML elements");
+      if (node2.parent) node2.parent.children.push(node2);
+      else roots.push(node2);
+      if (!selfClosing) {
+        stack.push(node2);
+        if (stack.length > LIMITS.depth) fail("size", "XML nesting too deep");
+      } else node2.end = pos;
+    }
+    if (stack.length || roots.length !== 1) fail("xml", "Expected one XML root");
+    return { raw, root: roots[0], nodes };
+  }
+
+  // src/core.mjs
+  var enc2 = new TextEncoder();
+  var same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+  function snapshot(value, label) {
+    try {
+      return structuredClone(value);
+    } catch {
+      fail("packet", `Invalid ${label}: expected cloneable data`);
+    }
+  }
+  var exactKeys = (value, keys, label) => {
+    if (!value || typeof value !== "object" || Array.isArray(value) || !same(Object.keys(value).sort(), [...keys].sort())) fail("packet", `Invalid ${label} fields`);
+  };
+  function canonical(value) {
+    if (Array.isArray(value)) return `[${value.map(canonical).join(",")}]`;
+    if (value && typeof value === "object") return `{${Object.keys(value).sort().map((k) => `${JSON.stringify(k)}:${canonical(value[k])}`).join(",")}}`;
+    return JSON.stringify(value);
+  }
+  async function sha256(value) {
+    const bytes = typeof value === "string" ? enc2.encode(value) : value;
+    const hash = await crypto.subtle.digest("SHA-256", bytes);
+    return [...new Uint8Array(hash)].map((n) => n.toString(16).padStart(2, "0")).join("");
+  }
+  function safeText(text, { empty = true } = {}) {
+    if (typeof text !== "string" || !empty && !text.length) fail("text", "Text must be a string");
+    for (const c of text) {
+      const cp = c.codePointAt(0);
+      if (!xmlChar(cp) || cp === 9 || cp === 10 || cp === 13 || cp === 173 || cp === 8232 || cp === 8233 || cp === 65532 || cp === 65533 || cp >= 57344 && cp <= 63743 || cp >= 983040 && cp <= 1048573 || cp >= 1048576 && cp <= 1114109) fail("text", "Tabs, breaks, soft hyphens, objects and private-use controls are unsupported");
+    }
+    return text;
+  }
+  function describe(node2, duplicates) {
+    const name = node2.attrs.ANNAME || "";
+    const reasons = [];
+    if (!name || name.trim() !== name || name.length > 200 || /[\x00-\x1f]/.test(name)) reasons.push("A stable, nonempty frame name is required");
+    if (duplicates.has(name)) reasons.push("Frame name is not unique");
+    if (node2.tag !== "PAGEOBJECT" || node2.parent?.tag !== "DOCUMENT") reasons.push("Only top-level page frames are supported");
+    if (node2.attrs.PTYPE !== "4") reasons.push("Only ordinary text frames are supported");
+    if (node2.attrs.NEXTITEM !== "-1" || node2.attrs.BACKITEM !== "-1") reasons.push("Linked or unproven-unlinked frames are unsupported");
+    if (!/^(0|[1-9][0-9]*)$/.test(node2.attrs.OwnPage ?? "") || !Number.isSafeInteger(Number(node2.attrs.OwnPage) + 1) || (node2.attrs.OnMasterPage ?? "") !== "") reasons.push("Master or off-page frames are unsupported");
+    for (const key of ["isNoteFrame", "isTableItem", "isGroupControl", "isInline", "AUTOTEXT", "groups", "GROUPS", "NUMGROUP", "isAutoText"]) if (node2.attrs[key] && !["0", "-1"].includes(node2.attrs[key])) reasons.push(`Unsupported frame flag: ${key}`);
+    let content = node2.children, wrapper = "direct";
+    const stories = node2.children.filter((n) => n.tag === "StoryText");
+    if (stories.length) {
+      if (stories.length !== 1 || node2.children.length !== 1) reasons.push("Unsupported story wrapper");
+      content = stories[0].children;
+      wrapper = "StoryText";
+      if (content[0]?.tag === "DefaultStyle" && !content[0].children.length) content = content.slice(1);
+      else reasons.push("StoryText requires one leading childless DefaultStyle");
+    }
+    if (content.length > 256) reasons.push("More than 256 story elements");
+    const trails = content.filter((n) => n.tag === "trail");
+    if (trails.length !== 1 || content.at(-1)?.tag !== "trail") reasons.push("One final trail element is required");
+    const runs = [], skeleton = [];
+    let paragraph = 0, inParagraph = 0;
+    for (const child of content) {
+      skeleton.push(child.tag);
+      if (child.children.length) reasons.push(`Nested ${child.tag} is unsupported`);
+      if (child.tag === "ITEXT") {
+        if (!Object.hasOwn(child.attrs, "CH") || Object.hasOwn(child.attrs, "Unicode") || Object.hasOwn(child.attrs, "COBJ")) reasons.push("Only ordinary CH text runs are supported");
+        const text = child.attrs.CH ?? "";
+        try {
+          safeText(text);
+        } catch (e) {
+          reasons.push(e.message);
+        }
+        runs.push({ paragraph, run: inParagraph++, text, node: child });
+      } else if (child.tag === "para") {
+        paragraph++;
+        inParagraph = 0;
+      } else if (child.tag !== "trail") reasons.push(`Unsupported text construct: ${child.tag}`);
+    }
+    if (!runs.length) reasons.push("At least one ordinary text run is required");
+    if (runs.length > LIMITS.runs) reasons.push("More than 128 text runs");
+    if ([...runs.map((r) => r.text).join("")].length + content.filter((n) => n.tag === "para").length > LIMITS.chars) reasons.push("More than 3,000 characters");
+    return { name, eligible: !reasons.length, reasons: [...new Set(reasons)], runs, skeleton, wrapper, text: content.map((n) => n.tag === "ITEXT" ? n.attrs.CH ?? "" : n.tag === "para" ? "\n" : "").join(""), page: Number(node2.attrs.OwnPage) + 1, node: node2 };
+  }
+  function inspectSla(input) {
+    const doc = parseXml(input);
+    if (doc.root.tag !== "SCRIBUSUTF8NEW" || !/^1\.6\.\d+$/.test(doc.root.attrs.Version ?? "")) fail("version", "Only uncompressed Scribus 1.6.x SLA is supported");
+    if (doc.root.children.length !== 1 || doc.root.children[0].tag !== "DOCUMENT") fail("document", "Expected one Scribus DOCUMENT");
+    const objects = doc.nodes.filter((n) => ["PAGEOBJECT", "MASTEROBJECT", "FRAMEOBJECT"].includes(n.tag));
+    const names = /* @__PURE__ */ new Map();
+    for (const n of objects) {
+      const name = n.attrs.ANNAME ?? "";
+      names.set(name, (names.get(name) ?? 0) + 1);
+    }
+    const duplicates = new Set([...names].filter(([, count]) => count > 1).map(([name]) => name));
+    const frames = objects.filter((n) => n.attrs.PTYPE === "4").map((n) => describe(n, duplicates));
+    return { ...doc, frames, version: doc.root.attrs.Version };
+  }
+  function publicFrame(frame) {
+    return { name: frame.name, page: frame.page, wrapper: frame.wrapper, skeleton: frame.skeleton, runs: frame.runs.map(({ paragraph, run, text }) => ({ paragraph, run, text })), text: frame.text };
+  }
+  async function createPacket(input, names, filename = "source.sla") {
+    const doc = inspectSla(input);
+    if (!Array.isArray(names) || !names.length || names.length > LIMITS.selected || new Set(names).size !== names.length) fail("selection", "Select 1\u201332 distinct frames");
+    const frames = names.map((name) => {
+      const found = doc.frames.filter((f) => f.name === name);
+      if (found.length !== 1 || !found[0].eligible) fail("selection", `Unsupported frame: ${name}`);
+      return publicFrame(found[0]);
+    });
+    const payload = { format: "frame-return/review", version: 1, source: { name: String(filename).slice(0, 200), sha256: await sha256(doc.raw), scribusVersion: doc.version }, frames };
+    return validatePacket({ ...payload, id: await sha256(canonical(payload)) });
+  }
+  function parseJson(input) {
+    if (typeof input !== "string" || enc2.encode(input).length > LIMITS.packetBytes) fail("packet", "Packet must be at most 2 MiB");
+    try {
+      return JSON.parse(input);
+    } catch {
+      fail("packet", "Invalid JSON packet");
+    }
+  }
+  async function validatePacket(packet) {
+    packet = snapshot(packet, "review packet");
+    exactKeys(packet, ["format", "version", "source", "frames", "id"], "packet");
+    if (packet.format !== "frame-return/review" || packet.version !== 1 || !/^[a-f0-9]{64}$/.test(packet.id)) fail("packet", "Unsupported review packet");
+    exactKeys(packet.source, ["name", "sha256", "scribusVersion"], "source");
+    if (typeof packet.source.name !== "string" || packet.source.name.length > 200 || !/^[a-f0-9]{64}$/.test(packet.source.sha256) || !/^1\.6\.\d+$/.test(packet.source.scribusVersion)) fail("packet", "Invalid source identity");
+    if (!Array.isArray(packet.frames) || !packet.frames.length || packet.frames.length > LIMITS.selected) fail("packet", "Invalid frame count");
+    const names = /* @__PURE__ */ new Set();
+    for (const frame of packet.frames) {
+      exactKeys(frame, ["name", "page", "wrapper", "skeleton", "runs", "text"], "frame");
+      if (typeof frame.name !== "string" || !frame.name.trim() || frame.name.trim() !== frame.name || frame.name.length > 200 || names.has(frame.name) || !Number.isSafeInteger(frame.page) || frame.page < 1 || !["direct", "StoryText"].includes(frame.wrapper)) fail("packet", "Invalid frame identity");
+      names.add(frame.name);
+      if (!Array.isArray(frame.runs) || !frame.runs.length || frame.runs.length > LIMITS.runs || !Array.isArray(frame.skeleton) || frame.skeleton.length > 256) fail("packet", "Invalid runs");
+      if (frame.skeleton.filter((t) => t === "trail").length !== 1 || frame.skeleton.at(-1) !== "trail") fail("packet", "One final trail is required");
+      let paragraph = 0, run = 0, index = 0, text = "";
+      for (const tag of frame.skeleton) {
+        if (tag === "para") {
+          paragraph++;
+          run = 0;
+          text += "\n";
+        } else if (tag === "ITEXT") {
+          const r = frame.runs[index++];
+          exactKeys(r, ["paragraph", "run", "text"], "run");
+          if (r.paragraph !== paragraph || r.run !== run++) fail("packet", "Changed run boundaries");
+          text += safeText(r.text);
+        } else if (tag !== "trail") fail("packet", "Unsupported packet structure");
+      }
+      if (index !== frame.runs.length || frame.text !== text || [...frame.text].length > LIMITS.chars) fail("packet", "Invalid baseline text");
+    }
+    const { id, ...payload } = packet;
+    if (id !== await sha256(canonical(payload))) fail("packet", "Review packet checksum mismatch");
+    return packet;
+  }
+  async function createReturn(packet, edits = {}) {
+    packet = snapshot(packet, "review packet");
+    edits = snapshot(edits, "edits");
+    packet = await validatePacket(packet);
+    const known = new Set(packet.frames.map((f) => f.name));
+    for (const key of Object.keys(edits)) if (!known.has(key)) fail("packet", "Unknown edited frame");
+    const result = { format: "frame-return/corrections", version: 1, packet, returns: packet.frames.map((frame) => ({ name: frame.name, values: Object.hasOwn(edits, frame.name) ? edits[frame.name] : frame.runs.map((r) => r.text) })) };
+    return validateReturn(result);
+  }
+  async function validateReturn(result) {
+    result = snapshot(result, "corrections");
+    exactKeys(result, ["format", "version", "packet", "returns"], "corrections");
+    if (result.format !== "frame-return/corrections" || result.version !== 1) fail("packet", "Unsupported corrections format");
+    result.packet = await validatePacket(result.packet);
+    if (!Array.isArray(result.returns) || result.returns.length !== result.packet.frames.length) fail("packet", "Missing returned frames");
+    result.returns.forEach((returned, i) => {
+      exactKeys(returned, ["name", "values"], "returned frame");
+      const frame = result.packet.frames[i];
+      if (returned.name !== frame.name || !Array.isArray(returned.values) || returned.values.length !== frame.runs.length) fail("packet", "Changed return run boundaries");
+      returned.values.forEach((v) => safeText(v));
+      if ([...returned.values.join("")].length + frame.skeleton.filter((t) => t === "para").length > LIMITS.chars) fail("text", "Replacement exceeds 3,000 characters");
+    });
+    return result;
+  }
+  async function analyzeReturn(input, result, originalPacket) {
+    input = utf8(input);
+    result = snapshot(result, "corrections");
+    originalPacket = snapshot(originalPacket, "original review packet");
+    if (!originalPacket) fail("packet", "Import the original review packet to bind this return");
+    originalPacket = await validatePacket(originalPacket);
+    result = await validateReturn(result);
+    if (canonical(originalPacket) !== canonical(result.packet)) fail("packet", "Corrections do not match the original review packet");
+    const doc = inspectSla(input);
+    const frames = result.packet.frames.map((baseline, i) => {
+      const values = result.returns[i].values;
+      const candidates = doc.frames.filter((f) => f.name === baseline.name);
+      const current = candidates[0];
+      let status, reason = "";
+      if (candidates.length !== 1 || !current?.eligible) {
+        status = "conflict";
+        reason = candidates.length === 0 ? "Frame is missing or renamed" : candidates.length > 1 ? "Frame name is duplicated" : current.reasons.join("; ");
+      } else if (!same(baseline.skeleton, current.skeleton) || baseline.wrapper !== current.wrapper || !same(baseline.runs.map((r) => [r.paragraph, r.run]), current.runs.map((r) => [r.paragraph, r.run]))) {
+        status = "conflict";
+        reason = "Run or paragraph boundaries changed";
+      } else if (!same(baseline.runs.map((r) => r.text), current.runs.map((r) => r.text))) {
+        status = "conflict";
+        reason = same(values, current.runs.map((r) => r.text)) ? "Already applied or current text equals this return; prepare a fresh packet" : "Current wording differs from the complete baseline";
+      } else {
+        status = same(values, baseline.runs.map((r) => r.text)) ? "unchanged" : "ready";
+      }
+      return { name: baseline.name, baseline: baseline.runs.map((r) => r.text), values, current: current?.runs.map((r) => r.text) ?? [], status, reason, frame: current };
+    });
+    return { doc, frames, sourceSha256: result.packet.source.sha256, currentSha256: await sha256(doc.raw), packetId: result.packet.id };
+  }
+  async function applyReturn(input, result, options = {}) {
+    input = utf8(input);
+    result = snapshot(result, "corrections");
+    options = snapshot(options, "application options");
+    const analysis = await analyzeReturn(input, result, options.originalPacket);
+    const exclude = options.excludeNames ?? [], approved = options.approvedNames ?? [];
+    if (!Array.isArray(exclude) || !Array.isArray(approved) || new Set(exclude).size !== exclude.length || new Set(approved).size !== approved.length) fail("selection", "Invalid approval/exclusion list");
+    const all = new Set(analysis.frames.map((f) => f.name));
+    if ([...exclude, ...approved].some((n) => !all.has(n)) || approved.some((n) => exclude.includes(n))) fail("selection", "Unknown or conflicting selection");
+    const conflicts = analysis.frames.filter((f) => f.status === "conflict" && !exclude.includes(f.name));
+    if (conflicts.length) fail("conflict", `Exclude conflicts explicitly before output: ${conflicts.map((f) => f.name).join(", ")}`);
+    const unapproved = analysis.frames.filter((f) => f.status === "ready" && !approved.includes(f.name) && !exclude.includes(f.name));
+    if (unapproved.length) fail("approval", "Approve or explicitly exclude every changed frame");
+    const patches = [];
+    for (const f of analysis.frames) if (f.status === "ready" && approved.includes(f.name)) f.frame.runs.forEach((r, i) => {
+      if (r.text !== f.values[i]) patches.push({ ...r.node.attrRanges.CH, text: escapeAttr(f.values[i], r.node.attrRanges.CH.quote), name: f.name, run: i });
+    });
+    let output = analysis.doc.raw;
+    for (const patch of [...patches].sort((a, b) => b.start - a.start)) output = output.slice(0, patch.start) + patch.text + output.slice(patch.end);
+    const checkedOutput = inspectSla(output);
+    for (const f of analysis.frames) if (f.status === "ready" && approved.includes(f.name)) {
+      const found = checkedOutput.frames.filter((frame) => frame.name === f.name);
+      if (found.length !== 1 || !found[0].eligible || !same(found[0].runs.map((run) => run.text), f.values) || !same(found[0].skeleton, f.frame.skeleton)) fail("output", "Patched wording or frame eligibility differs from the approved correction");
+    }
+    const receipt = { format: "frame-return/receipt", version: 1, packetId: analysis.packetId, originalSha256: analysis.sourceSha256, currentSha256: analysis.currentSha256, outputSha256: await sha256(output), bytePolicy: "Only approved ITEXT CH attribute value ranges were replaced", repeatPolicy: "Stale rejection, including already-applied wording", layoutValidation: "Required in Scribus; no browser layout or overflow guarantee", assets: "Not packaged. Save revised SLA beside current SLA.", frames: analysis.frames.map((f) => ({ name: f.name, status: exclude.includes(f.name) ? "excluded" : f.status === "ready" ? "applied" : f.status, reason: f.reason })), changedRuns: patches.map(({ name, run }) => ({ name, run })) };
+    return { output, receipt, corrections: result };
+  }
+  function serialize(value) {
+    return JSON.stringify(value, null, 2) + "\n";
+  }
+
+  // src/fixture.mjs
+  function sampleSla(current = false) {
+    return `<?xml version="1.0" encoding="UTF-8"?>
+<SCRIBUSUTF8NEW Version="1.6.1">
+ <DOCUMENT TITLE="Community studio">
+  <CHARSTYLE CNAME="Headline" FONT="DejaVu Sans Bold" FONTSIZE="${current ? 24 : 20}" FCOLOR="Ink"/>
+  <COLOR NAME="Ink" RGB="#263a35"/>
+  <PAGE NUM="0" PAGEXPOS="0" PAGEYPOS="0" PAGEWIDTH="595" PAGEHEIGHT="842"/>
+  <PAGEOBJECT ItemID="${current ? "8124" : "201"}" ANNAME="headline" OwnPage="0" PTYPE="4" XPOS="${current ? 80 : 40}" YPOS="48" WIDTH="${current ? 260 : 200}" HEIGHT="56" NEXTITEM="-1" BACKITEM="-1">
+   <StoryText><DefaultStyle PARENT="Body"/><ITEXT CH="Open " CPARENT="Headline"/><ITEXT CH="studio" FONT="DejaVu Sans Book" FONTSIZE="20" FCOLOR="Ink"/><trail PARENT="Body"/></StoryText>
+  </PAGEOBJECT>
+  <PAGEOBJECT ItemID="202" ANNAME="sidebar" OwnPage="0" PTYPE="4" XPOS="40" YPOS="128" WIDTH="220" HEIGHT="40" NEXTITEM="-1" BACKITEM="-1"><StoryText><DefaultStyle/><ITEXT CH="${current ? "18:30" : "18:00"}" FONT="DejaVu Sans Book" FONTSIZE="14"/><trail/></StoryText></PAGEOBJECT>
+  <PAGEOBJECT ItemID="203" ANNAME="caption" OwnPage="0" PTYPE="4" XPOS="40" YPOS="188" WIDTH="380" HEIGHT="110" NEXTITEM="-1" BACKITEM="-1"><StoryText><DefaultStyle/><ITEXT CH="Open studio, open doors."/><para PARENT="Body"/><ITEXT CH="\u5730\u57DF\u306E\u30A2\u30C8\u30EA\u30A8\u3078\u3002 Caf\xE9 &amp; cafe\u0301."/><trail/></StoryText></PAGEOBJECT>
+  <PAGEOBJECT ItemID="204" ANNAME="hero-image" OwnPage="0" PTYPE="2" XPOS="40" YPOS="340" WIDTH="120" HEIGHT="120" PFILE="assets/checker.png"/>
+ </DOCUMENT>
+</SCRIBUSUTF8NEW>
+`;
+  }
+
+  // web/app.js
+  var $ = (id) => document.getElementById(id);
+  var en = {
+    assignmentLabel: "Original review packet saved when assigning",
+    assignmentHint: "Verified separately from the copy embedded in corrections",
+    skip: "Skip to workspace",
+    language: "Language",
+    local: "Local processing \xB7 no upload",
+    title: "Return the words.<br>Keep the current layout.",
+    intro: "Assign selected wording for review, then return it to a newer SLA. When the designer has also changed the assigned words, stop before applying.",
+    contract: "SUPPORTED HANDOFF",
+    scope: "Scribus 1.6.x \xB7 uncompressed UTF-8 SLA<br>Uniquely named, unlinked text frames",
+    limits: "Up to 32 frames / 3,000 characters \xB7 128 runs each",
+    prepare: "Prepare",
+    review: "Review copy",
+    apply: "Return to layout",
+    reset: "Reset all",
+    designer: "DESIGNER / ASSIGN & RETURN",
+    copyeditor: "COPYEDITOR / REVIEW",
+    prepareHeading: "Choose the frames to send for review",
+    sampleSource: "Try sample",
+    prepareHelp: "Give frames unique names in Scribus and save. Select only the wording you want reviewed. The sample is a synthetic interface/parser fixture.",
+    sourceLabel: "Original SLA for the assignment",
+    sourceHint: "Choose an uncompressed .sla \xB7 up to 16 MiB",
+    choose: "ASSIGNED WORDING",
+    sourceEmpty: "Import an SLA to see which text frames can be assigned.",
+    packetHint: "The review packet contains selected wording. Share it only with a trusted copyeditor.",
+    createPacket: "Save review packet \u2192",
+    reviewHeading: "Edit wording within its existing style runs",
+    packetLabel: "Review packet JSON",
+    packetFileHint: "Choose frame-return-review.json",
+    reviewHelp: "Each field is a style run. Run and paragraph boundaries stay fixed. Edit only the words inside each field; do not add line breaks or tabs.",
+    reviewEmpty: "Import a review packet to begin.",
+    reviewHint: "This is a copyediting view. Check the real layout, styles and fit in Scribus.",
+    saveReturn: "Save corrections packet \u2192",
+    applyHeading: "Compare the return with your current layout",
+    sampleCurrent: "Load sample current",
+    returnLabel: "Returned corrections JSON",
+    returnHint: "frame-return-corrections.json",
+    currentLabel: "Current SLA",
+    currentHint: "Choose your latest working .sla",
+    compareHelp: "Match the unique name, complete baseline wording, and run/paragraph boundaries. Keep current placement, styling, and other text.",
+    analyze: "Check corrections",
+    applyEmpty: "Import both files, then check the corrections.",
+    applyHint: "Approve each change. Every conflict must be explicitly excluded before output.",
+    applyReturn: "Apply approved corrections",
+    ready: "OUTPUT CREATED",
+    saveBeside: "Save beside the current SLA",
+    assetWarning: "Images are not packaged. Keep relative paths intact, reopen in Scribus, and check overflow, styles, and the exported PDF. Text is never automatically shrunk.",
+    downloadSla: "Save revised SLA",
+    downloadReceipt: "Save receipt JSON",
+    boundsHeading: "A deliberately bounded return",
+    bounds: "Linked, grouped, master, table, inline, and special break/tab constructs are excluded. Renamed or recreated frames with reused names cannot be tracked. Reapplying a return is rejected as stale.",
+    privacy: "Files stay in this browser. No upload, server processing, or saved history. Download what you need before closing.",
+    footer: "Scribus is the final authority for layout."
+  };
+  var ja = Object.fromEntries([...document.querySelectorAll("[data-i18n]")].map((el) => [el.dataset.i18n, el.innerHTML]));
+  var lang = "ja";
+  var seq = 0;
+  var fresh = () => ({ source: null, sourceName: "", selected: /* @__PURE__ */ new Set(), packet: null, assignment: null, edits: /* @__PURE__ */ Object.create(null), corrections: null, current: null, currentName: "", analysis: null, approved: /* @__PURE__ */ new Set(), excluded: /* @__PURE__ */ new Set(), output: null, step: "prepare" });
+  var state = fresh();
+  var tr = (j, e) => lang === "ja" ? j : e;
+  function node(tag, attrs = {}, children = []) {
+    const n = document.createElement(tag);
+    for (const [k, v] of Object.entries(attrs)) {
+      if (k === "class") n.className = v;
+      else if (k === "text") n.textContent = v;
+      else n.setAttribute(k, v);
+    }
+    for (const child of children) n.append(child);
+    return n;
+  }
+  function message(text, error = false) {
+    $("notice").textContent = text;
+    $("notice").hidden = !text;
+    $("notice").classList.toggle("error", error);
+  }
+  function showError(e) {
+    const lead = tr("\u51E6\u7406\u3067\u304D\u307E\u305B\u3093\u3067\u3057\u305F\u3002", "Unable to continue. ");
+    message(`${lead} ${e.message || String(e)}`, true);
+  }
+  function invalidate() {
+    state.analysis = null;
+    state.approved.clear();
+    state.excluded.clear();
+    state.output = null;
+  }
+  function outputOff() {
+    state.output = null;
+    $("downloads").hidden = true;
+  }
+  function switchStep(step) {
+    state.step = step;
+    for (const name of ["prepare", "review", "apply"]) {
+      $(name + "-panel").hidden = name !== step;
+      $("tab-" + name).classList.toggle("active", name === step);
+      if (name === step) $("tab-" + name).setAttribute("aria-current", "step");
+      else $("tab-" + name).removeAttribute("aria-current");
+    }
+  }
+  function download(name, data, type) {
+    const url = URL.createObjectURL(new Blob([data], { type }));
+    const a = node("a", { href: url, download: name });
+    document.body.append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 3e4);
+  }
+  async function task(work) {
+    const id = ++seq;
+    try {
+      await work(() => id === seq);
+    } catch (e) {
+      if (id === seq) {
+        showError(e);
+        render();
+      }
+    }
+  }
+  async function readFile(input, kind) {
+    const file = input.files[0];
+    if (!file) return null;
+    const max = kind === "sla" ? LIMITS.bytes : LIMITS.packetBytes;
+    if (file.size > max) throw Error(tr("\u30D5\u30A1\u30A4\u30EB\u306E\u30B5\u30A4\u30BA\u4E0A\u9650\u3092\u8D85\u3048\u3066\u3044\u307E\u3059\u3002", "File exceeds the size limit."));
+    const bytes = new Uint8Array(await file.arrayBuffer());
+    const raw = new TextDecoder("utf-8", { fatal: true, ignoreBOM: true }).decode(bytes);
+    return { raw, name: file.name };
+  }
+  function renderSource() {
+    $("source-name").textContent = state.sourceName || (lang === "ja" ? ja.sourceHint : en.sourceHint);
+    const list = $("frame-list");
+    list.replaceChildren();
+    if (!state.source) {
+      list.append(node("div", { class: "empty", text: lang === "ja" ? ja.sourceEmpty : en.sourceEmpty }));
+    } else state.source.frames.forEach((f, i) => {
+      const check = node("input", { type: "checkbox", "aria-label": tr(`${f.name || "\u7121\u540D"} \u3092\u4F9D\u983C`, `Assign ${f.name || "unnamed"}`), "data-frame": f.name });
+      check.checked = state.selected.has(f.name);
+      check.disabled = !f.eligible;
+      check.addEventListener("change", () => {
+        if (check.checked) {
+          if (state.selected.size >= LIMITS.selected) {
+            check.checked = false;
+            message(tr("\u9078\u3079\u308B\u306E\u306F32\u30D5\u30EC\u30FC\u30E0\u307E\u3067\u3067\u3059\u3002", "Select at most 32 frames."), true);
+            return;
+          }
+          state.selected.add(f.name);
+        } else state.selected.delete(f.name);
+        seq++;
+        state.packet = null;
+        state.assignment = null;
+        state.corrections = null;
+        state.edits = /* @__PURE__ */ Object.create(null);
+        invalidate();
+        renderControls();
+        renderReview();
+        renderReturns();
+      });
+      const head = node("div", { class: "frame-head" }, [node("span", { class: "frame-name", text: f.name || tr("\u540D\u524D\u306A\u3057", "Unnamed") }), node("span", { class: "frame-meta", text: tr(`P${f.page} \xB7 ${f.runs.length} \u30E9\u30F3`, `P${f.page} \xB7 ${f.runs.length} runs`) })]);
+      const body = node("div", { class: "frame-body" }, [head, node("p", { class: "frame-copy", text: f.text.slice(0, 240) + (f.text.length > 240 ? "\u2026" : "") })]);
+      if (!f.eligible) body.append(node("p", { class: "unsupported", text: f.reasons.join(" / ") }));
+      list.append(node("label", { class: "frame" }, [check, body]));
+    });
+    if (state.source && !state.source.frames.length) list.append(node("div", { class: "empty", text: tr("\u30C6\u30AD\u30B9\u30C8\u30D5\u30EC\u30FC\u30E0\u304C\u3042\u308A\u307E\u305B\u3093\u3002", "No text frames found.") }));
+  }
+  function renderReview() {
+    $("review-name").textContent = state.packet ? `${state.packet.source.name} \xB7 ${state.packet.id.slice(0, 12)}` : lang === "ja" ? ja.packetFileHint : en.packetFileHint;
+    const list = $("review-list");
+    list.replaceChildren();
+    if (!state.packet) {
+      list.append(node("div", { class: "empty", text: lang === "ja" ? ja.reviewEmpty : en.reviewEmpty }));
+      return;
+    }
+    for (const [fi, f] of state.packet.frames.entries()) {
+      const card = node("article", { class: "review-frame" }, [node("div", { class: "card-heading" }, [node("h3", { text: f.name }), node("small", { text: tr(`P${f.page} / ${f.runs.length} \u30E9\u30F3`, `P${f.page} / ${f.runs.length} runs`) })])]);
+      f.runs.forEach((r, ri) => {
+        const id = `run-${fi}-${ri}`, area = node("textarea", { id, "data-frame": f.name, "data-run": String(ri), rows: "2", spellcheck: "true", "aria-describedby": `${id}-base` });
+        area.value = state.edits[f.name][ri];
+        area.addEventListener("input", () => {
+          seq++;
+          state.edits[f.name][ri] = area.value;
+          state.corrections = null;
+          invalidate();
+          renderControls();
+          renderReturns();
+        });
+        card.append(node("div", { class: "run-editor" }, [node("label", { for: id, class: "run-label" }, [node("span", { text: tr(`\u6BB5\u843D ${r.paragraph + 1} / \u30E9\u30F3 ${r.run + 1}`, `Paragraph ${r.paragraph + 1} / run ${r.run + 1}`) }), node("span", { text: tr("\u533A\u5207\u308A\u306F\u56FA\u5B9A", "Fixed boundary") })]), node("p", { id: `${id}-base`, class: "baseline", text: tr("\u5143\u306E\u6587\u7AE0: ", "Original: ") + r.text }), area]));
+      });
+      list.append(card);
+    }
+  }
+  function renderReturns() {
+    const focusLabel = document.activeElement?.closest("#return-list") ? document.activeElement.getAttribute("aria-label") : null;
+    $("assignment-name").textContent = state.assignment ? `${state.assignment.source.name} \xB7 ${state.assignment.id.slice(0, 12)}` : lang === "ja" ? ja.assignmentHint : en.assignmentHint;
+    $("return-name").textContent = state.corrections ? `${state.corrections.packet.source.name} \xB7 ${state.corrections.returns.length} ${tr("\u30D5\u30EC\u30FC\u30E0", "frames")}` : lang === "ja" ? ja.returnHint : en.returnHint;
+    $("current-name").textContent = state.currentName || (lang === "ja" ? ja.currentHint : en.currentHint);
+    const list = $("return-list");
+    list.replaceChildren();
+    if (!state.analysis) {
+      list.append(node("div", { class: "empty", text: lang === "ja" ? ja.applyEmpty : en.applyEmpty }));
+      return;
+    }
+    for (const f of state.analysis.frames) {
+      const statusText = f.status === "ready" ? tr("\u9069\u7528\u53EF\u80FD", "READY") : f.status === "conflict" ? tr("\u7AF6\u5408", "CONFLICT") : tr("\u5909\u66F4\u306A\u3057", "UNCHANGED");
+      const card = node("article", { class: "return-frame", "data-return-frame": f.name }, [node("div", { class: "card-heading" }, [node("h3", { text: f.name }), node("span", { class: `status ${f.status}`, text: statusText })])]);
+      card.append(node("div", { class: "comparison" }, [[tr("\u4F9D\u983C\u6642", "BASELINE"), f.baseline], [tr("\u6821\u6B63\u5F8C", "RETURNED"), f.values], [tr("\u6700\u65B0\u7248", "CURRENT"), f.current]].map(([label, texts]) => node("div", {}, [node("small", { text: label }), node("p", { text: texts.join("") || tr("\uFF08\u7A7A\u6B04\uFF09", "(empty)") })]))));
+      if (f.reason) card.append(node("p", { class: "conflict-reason", text: f.reason }));
+      const choices = node("div", { class: "decision" });
+      if (f.status === "ready") {
+        const approve = node("input", { type: "checkbox", "aria-label": tr(`${f.name} \u306E\u4FEE\u6B63\u3092\u627F\u8A8D`, `Approve ${f.name}`) });
+        approve.checked = state.approved.has(f.name);
+        approve.addEventListener("change", () => {
+          seq++;
+          if (approve.checked) {
+            state.approved.add(f.name);
+            state.excluded.delete(f.name);
+          } else state.approved.delete(f.name);
+          outputOff();
+          renderControls();
+          renderReturns();
+        });
+        choices.append(node("label", {}, [approve, node("span", { text: tr("\u3053\u306E\u4FEE\u6B63\u3092\u627F\u8A8D", "Approve this correction") })]));
+      }
+      if (f.status !== "unchanged") {
+        const exclude = node("input", { type: "checkbox", "aria-label": tr(`${f.name} \u3092\u4ECA\u56DE\u306E\u9069\u7528\u304B\u3089\u9664\u5916`, `Exclude ${f.name}`) });
+        exclude.checked = state.excluded.has(f.name);
+        exclude.addEventListener("change", () => {
+          seq++;
+          if (exclude.checked) {
+            state.excluded.add(f.name);
+            state.approved.delete(f.name);
+          } else state.excluded.delete(f.name);
+          outputOff();
+          renderControls();
+          renderReturns();
+        });
+        choices.append(node("label", {}, [exclude, node("span", { text: tr("\u4ECA\u56DE\u306F\u660E\u793A\u7684\u306B\u9664\u5916", "Explicitly exclude this frame") })]));
+      }
+      if (choices.children.length) card.append(choices);
+      list.append(card);
+    }
+    if (focusLabel) [...list.querySelectorAll("input")].find((el) => el.getAttribute("aria-label") === focusLabel)?.focus();
+  }
+  function renderControls() {
+    $("selection-count").textContent = `${state.selected.size} / 32`;
+    $("create-packet").disabled = !state.source || !state.selected.size;
+    $("save-return").disabled = !state.packet;
+    $("analyze").disabled = !state.corrections || !state.current || !state.assignment;
+    $("apply-return").disabled = !state.analysis || state.analysis.frames.some((f) => f.status === "conflict" && !state.excluded.has(f.name) || f.status === "ready" && !state.excluded.has(f.name) && !state.approved.has(f.name));
+    $("downloads").hidden = !state.output;
+  }
+  function render() {
+    renderSource();
+    renderReview();
+    renderReturns();
+    renderControls();
+    switchStep(state.step);
+  }
+  function setPacket(packet) {
+    state.packet = packet;
+    state.assignment = packet;
+    state.edits = Object.fromEntries(packet.frames.map((f) => [f.name, f.runs.map((r) => r.text)]));
+    state.corrections = null;
+    state.current = null;
+    state.currentName = "";
+    invalidate();
+  }
+  function setSource(raw, name) {
+    const doc = inspectSla(raw);
+    state = fresh();
+    state.source = doc;
+    state.sourceName = name;
+  }
+  $("source-input").addEventListener("change", () => task(async (valid) => {
+    state = fresh();
+    render();
+    const f = await readFile($("source-input"), "sla");
+    if (f && valid()) {
+      setSource(f.raw, f.name);
+      message(tr("\u4F9D\u983C\u3059\u308B\u30D5\u30EC\u30FC\u30E0\u3092\u9078\u3093\u3067\u304F\u3060\u3055\u3044\u3002", "Choose the frames to assign."));
+      render();
+    }
+  }));
+  $("sample-source").addEventListener("click", () => {
+    seq++;
+    setSource(sampleSla(false), "sample-original.sla");
+    message(tr("\u69CB\u6587\u30C6\u30B9\u30C8\u7528\u30B5\u30F3\u30D7\u30EB\u3092\u8AAD\u307F\u8FBC\u307F\u307E\u3057\u305F\u3002headline \u3092\u9078\u3076\u3068\u914D\u7F6E\u5909\u66F4\u306E\u4FDD\u6301\u3092\u8A66\u305B\u307E\u3059\u3002", "Synthetic sample loaded. Select headline to try a wording return that preserves newer geometry."));
+    render();
+  });
+  $("create-packet").addEventListener("click", () => task(async (valid) => {
+    const packet = await createPacket(state.source.raw, [...state.selected], state.sourceName);
+    if (!valid()) return;
+    setPacket(packet);
+    download("frame-return-review.json", serialize(packet), "application/json");
+    switchStep("review");
+    message(tr("\u4F9D\u983C\u30D1\u30B1\u30C3\u30C8\u3092\u4F5C\u6210\u3057\u307E\u3057\u305F\u3002\u6821\u6B63\u62C5\u5F53\u8005\u306B\u306F\u3053\u306E JSON \u3092\u6E21\u3057\u307E\u3059\u3002", "Review packet created. Share this JSON with the copyeditor."));
+    render();
+  }));
+  $("review-input").addEventListener("change", () => task(async (valid) => {
+    state.packet = null;
+    state.assignment = null;
+    state.edits = /* @__PURE__ */ Object.create(null);
+    state.corrections = null;
+    state.current = null;
+    state.currentName = "";
+    invalidate();
+    render();
+    const f = await readFile($("review-input"), "json");
+    if (!f) return;
+    const packet = await validatePacket(parseJson(f.raw));
+    if (!valid()) return;
+    setPacket(packet);
+    message(tr("\u30D1\u30B1\u30C3\u30C8\u3092\u7167\u5408\u3057\u307E\u3057\u305F\u3002\u6587\u7AE0\u3092\u7DE8\u96C6\u3067\u304D\u307E\u3059\u3002", "Packet checksum checked. Edit the wording below."));
+    render();
+  }));
+  $("save-return").addEventListener("click", () => task(async (valid) => {
+    state.corrections = null;
+    invalidate();
+    renderControls();
+    renderReturns();
+    const corrections = await createReturn(state.packet, state.edits);
+    if (!valid()) return;
+    state.corrections = corrections;
+    download("frame-return-corrections.json", serialize(corrections), "application/json");
+    switchStep("apply");
+    message(tr("\u4FEE\u6B63\u30D1\u30B1\u30C3\u30C8\u3092\u4F5C\u6210\u3057\u307E\u3057\u305F\u3002\u4F9D\u983C\u5074\u3067\u6700\u65B0\u7248 SLA \u3068\u7167\u5408\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "Corrections created. The designer should check them against the current SLA."));
+    render();
+  }));
+  $("assignment-input").addEventListener("change", () => task(async (valid) => {
+    state.assignment = null;
+    invalidate();
+    render();
+    const f = await readFile($("assignment-input"), "json");
+    if (!f) return;
+    const packet = await validatePacket(parseJson(f.raw));
+    if (!valid()) return;
+    state.assignment = packet;
+    message(tr("\u5143\u306E\u4F9D\u983C\u30D1\u30B1\u30C3\u30C8\u3092\u8AAD\u307F\u8FBC\u307F\u307E\u3057\u305F\u3002", "Original review packet loaded."));
+    render();
+  }));
+  $("return-input").addEventListener("change", () => task(async (valid) => {
+    state.corrections = null;
+    invalidate();
+    render();
+    const f = await readFile($("return-input"), "json");
+    if (!f) return;
+    const corrections = await validateReturn(parseJson(f.raw));
+    if (!valid()) return;
+    state.corrections = corrections;
+    message(tr("\u4FEE\u6B63\u30D1\u30B1\u30C3\u30C8\u3092\u8AAD\u307F\u8FBC\u307F\u307E\u3057\u305F\u3002", "Corrections packet loaded."));
+    render();
+  }));
+  $("current-input").addEventListener("change", () => task(async (valid) => {
+    state.current = null;
+    state.currentName = "";
+    invalidate();
+    render();
+    const f = await readFile($("current-input"), "sla");
+    if (!f) return;
+    inspectSla(f.raw);
+    if (!valid()) return;
+    state.current = f.raw;
+    state.currentName = f.name;
+    message(tr("\u6700\u65B0\u7248\u3092\u8AAD\u307F\u8FBC\u307F\u307E\u3057\u305F\u3002\u7167\u5408\u3092\u5B9F\u884C\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "Current SLA loaded. Check the corrections next."));
+    render();
+  }));
+  $("sample-current").addEventListener("click", () => {
+    seq++;
+    state.current = sampleSla(true);
+    state.currentName = "sample-current.sla";
+    invalidate();
+    message(tr("\u30B5\u30F3\u30D7\u30EB\u6700\u65B0\u7248: headline \u306F x=80\u30FB\u5E45260\u3001sidebar \u306F18:30\u3067\u3059\u3002", "Sample current: headline is x=80 / width=260; sidebar is 18:30."));
+    render();
+  });
+  $("analyze").addEventListener("click", () => task(async (valid) => {
+    invalidate();
+    renderControls();
+    renderReturns();
+    const analysis = await analyzeReturn(state.current, state.corrections, state.assignment);
+    if (!valid()) return;
+    state.analysis = analysis;
+    const n = analysis.frames.filter((f) => f.status === "conflict").length;
+    message(n ? tr(`${n} \u4EF6\u306E\u7AF6\u5408\u304C\u3042\u308A\u307E\u3059\u3002\u9664\u5916\u3059\u308B\u304B\u3001\u6700\u65B0\u7248\u304B\u3089\u4F9D\u983C\u3057\u76F4\u3057\u3066\u304F\u3060\u3055\u3044\u3002`, `${n} conflict(s). Explicitly exclude them or prepare a fresh packet from the current SLA.`) : tr("\u7167\u5408\u3057\u307E\u3057\u305F\u3002\u9069\u7528\u3059\u308B\u4FEE\u6B63\u3092\u305D\u308C\u305E\u308C\u627F\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "Checked. Approve each correction you want to apply."), !!n);
+    render();
+  }));
+  $("apply-return").addEventListener("click", () => task(async (valid) => {
+    outputOff();
+    const result = await applyReturn(state.current, state.corrections, { originalPacket: state.assignment, approvedNames: [...state.approved], excludeNames: [...state.excluded] });
+    if (!valid()) return;
+    state.output = result;
+    message(tr("\u4FEE\u6B63\u7248\u3092\u4F5C\u6210\u3057\u307E\u3057\u305F\u3002\u6700\u65B0\u7248\u3068\u540C\u3058\u30D5\u30A9\u30EB\u30C0\u306B\u4FDD\u5B58\u3057\u3001Scribus \u3067\u53CE\u307E\u308A\u3092\u78BA\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002", "Revised SLA created. Save it beside the current SLA and check fit in Scribus."));
+    renderControls();
+  }));
+  $("download-sla").addEventListener("click", () => {
+    if (state.output) download("frame-return-revised.sla", state.output.output, "application/xml");
+  });
+  $("download-receipt").addEventListener("click", () => {
+    if (state.output) download("frame-return-receipt.json", serialize(state.output.receipt), "application/json");
+  });
+  $("reset").addEventListener("click", () => {
+    seq++;
+    state = fresh();
+    for (const input of document.querySelectorAll("input[type=file]")) input.value = "";
+    message(tr("\u30D5\u30A1\u30A4\u30EB\u3068\u7DE8\u96C6\u5185\u5BB9\u3092\u6D88\u53BB\u3057\u307E\u3057\u305F\u3002", "Files and edits cleared."));
+    render();
+  });
+  $("language").addEventListener("change", () => {
+    lang = $("language").value;
+    document.documentElement.lang = lang;
+    for (const el of document.querySelectorAll("[data-i18n]")) el.innerHTML = (lang === "ja" ? ja : en)[el.dataset.i18n];
+    render();
+  });
+  for (const step of ["prepare", "review", "apply"]) $("tab-" + step).addEventListener("click", () => switchStep(step));
+  render();
+})();
+</script>
+</body></html>
