@@ -1,0 +1,85 @@
+name: Verify FrameReturn
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  unit-and-byte-oracle:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - run: python -m pip install --requirement requirements.txt
+      - run: npm run check
+      - run: npm run fixture
+      - run: npm run test:oracle
+      - run: python -m unittest discover -s tools/native -p 'test_*.py' -v
+      - run: python -m py_compile tools/native/*.py tools/oracle.py
+      - run: bash -n tools/native/install-ci.sh
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frame-return-unit-node-${{ matrix.node }}
+          path: |
+            test-results/
+            generated/
+  sandbox-browser-and-native-scribus:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci --ignore-scripts
+      - run: python -m pip install --requirement requirements.txt
+      - run: npx --no-install playwright install --with-deps chromium
+      - name: Install exact official Ubuntu Scribus 1.6.1 package
+        run: bash tools/native/install-ci.sh
+      - run: npm run build && npm run fixture
+      - name: Generate fixtures in pinned native Scribus under Xvfb
+        run: python tools/native/harness.py generate --workdir test-results/native
+      - name: Sandboxed browser workflow and actual downloads
+        run: npm run test:browser
+        env:
+          NATIVE_WORKDIR: test-results/native
+      - name: Independent byte-mask and XML oracle on actual browser outputs
+        run: |
+          python tools/oracle.py --current generated/current.sla --output test-results/browser/short.sla --expected generated/expected.json --report test-results/browser/short-oracle.json
+          python tools/oracle.py --current generated/current.sla --output test-results/browser/noop.sla --expected generated/noop-expected.json --report test-results/browser/noop-oracle.json
+          python tools/oracle.py --current test-results/native/current.sla --output test-results/native/returned-short.sla --expected test-results/native/expected-short.json --report test-results/native/short-oracle.json
+          python tools/oracle.py --current test-results/native/current.sla --output test-results/native/returned-long.sla --expected test-results/native/expected-long.json --report test-results/native/long-oracle.json
+      - name: Reopen actual short download and verify native styles, assets, fit and PDF
+        run: python tools/native/harness.py check --workdir test-results/native --input test-results/native/returned-short.sla --case short
+      - name: Reopen actual long download and require overflow without shrinking
+        run: python tools/native/harness.py check --workdir test-results/native --input test-results/native/returned-long.sla --case long
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: frame-return-browser-native-evidence
+          path: |
+            test-results/
+            generated/
+          if-no-files-found: error
