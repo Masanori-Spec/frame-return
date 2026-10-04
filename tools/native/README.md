@@ -22,6 +22,24 @@ this harness. A checked-in harness is **not** evidence of a native pass.
 The Scribus packages are exactly pinned. Supporting packages and the runner image
 are recorded in each report, not claimed to be a fully reproducible OS image.
 
+## Observed hosted execution
+
+All five jobs passed at commit `e4628478bf4ccbba9ccbbfee198c1dbc0683bff5` in
+[run37220146519](https://github.com/Masanori-Spec/frame-return/actions/runs/37220146519).
+That run included53 Node groups on22/24,42 oracle regressions,11 harness tests,
+16 sandboxed browser cases, both actual-download native reopen checks and inspected
+PDF rasters. Independent source review remains incomplete. The subsequent targeted
+Japanese/mobile UI changes await their own hosted rerun; this recorded pass applies
+to the cited commit.
+
+The five-job workflow contains two Node matrix jobs and three dependent consumer
+stages: native generation on Ubuntu24.04, sandboxed browser on Ubuntu22.04, then
+native reopening on Ubuntu24.04. Artifact transfer preserves `test-results/native`
+with baseline/current files, relative assets and actual browser downloads. The
+native pin remains unchanged. No system security setting or sandbox bypass is
+used. See [verification record](../../docs/VERIFICATION.md) for exact evidence and
+consumer boundaries.
+
 ## Integration contract for the workflow and browser test
 
 Run from the repository root, with a fresh artifact directory:

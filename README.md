@@ -4,7 +4,7 @@
 
 A bounded copyediting handoff for existing Scribus layouts. The designer keeps moving, resizing and styling the working layout while selected wording is reviewed. Returned edits apply only if the assigned frame's complete baseline wording and run/paragraph structure still match.
 
-**Current status: implementation and local parser/oracle checks; hosted browser and real Scribus acceptance gates are pending.** See [verification](docs/VERIFICATION.md). Do not treat the checked-in native harness as a native compatibility pass.
+**Verified baseline:** all five hosted jobs passed for commit `e4628478bf4ccbba9ccbbfee198c1dbc0683bff5` in [run37220146519](https://github.com/Masanori-Spec/frame-return/actions/runs/37220146519), including actual browser downloads reopened in pinned Scribus1.6.1. The current focused Japanese-language/mobile-layout update awaits its own hosted rerun. See [verification](docs/VERIFICATION.md) for exact results and limits. Independent source review remains incomplete.
 
 ## Use / 使い方
 

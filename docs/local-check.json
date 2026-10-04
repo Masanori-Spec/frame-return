@@ -1,7 +1,7 @@
 {
   "schema": "frame-return-local-check/v1",
   "date": "2026-10-04",
-  "status": "passed-local-hosted-gates-pending",
+  "status": "passed-local-localization-followup-hosted-rerun-pending",
   "environment": {
     "node": "v24.19.0",
     "python": "Python 3.12.14",
@@ -9,7 +9,7 @@
     "hostedLxmlPin": "6.0.2"
   },
   "passed": {
-    "nodeBehaviorAndStaticGroups": 52,
+    "nodeBehaviorAndStaticGroups": 55,
     "independentOracleRegressionTests": 42,
     "independentSyntheticOutputCases": 2,
     "nativeHarnessNonNativeTests": 11,
@@ -17,7 +17,8 @@
     "jsSyntax": true,
     "pythonCompilation": true,
     "shellSyntax": true,
-    "pendingInputSnapshotRegressions": 6
+    "pendingInputSnapshotRegressions": 6,
+    "localizationRegressionGroups": 2
   },
   "unrun": [
     "Sandboxed Chromium UI workflow and visual screenshots",
@@ -33,19 +34,32 @@
     "src/core.mjs": "49979e1bd4b8839f37a0beff0a69bbc473bce24c8c3e35a67019b22bf8bfa62e",
     "src/xml.mjs": "376ef44277103920b8c7b24dbb76e32bee05ba33bfcd71ec57305353115098f8",
     "src/fixture.mjs": "d8fe11f4c3fb397d7023f91532cda76cfa14e4422f64ecac80c6a55ce0057dae",
-    "web/app.js": "2a0fb7bd82ab890671c2462e753fa298730f584489c28a73ac4b8fef7acc61f8",
+    "web/app.js": "5c2a6e3c333de1d828b0d7625907299422c7bea884f53b4c45b90320e75d9a99",
     "web/index.html": "1196bf246ad0bc099dc46caf7d787cbfdf865751562061f513e63f59ef8cfb97",
-    "web/styles.css": "ffd4e8cd73c9b59a16ac8891f7b5b5c2f6ac1c99e5a1c9a86071b812ce63cd8f",
-    "dist/index.html": "f1db57d76fe4e7f96717949cad5236b05d98b422ed5a079336bf6ee50de8350e",
+    "web/styles.css": "c5c66e2d4a33e12a27ceed737a9d942e917aedf908608216ea84474dae1627a0",
+    "dist/index.html": "9a95cbc32e265261ff792c5ef163bfbcc477c81b58c4bd990d9a0246374175eb",
     "tests/core.test.mjs": "d5212eb25f9030a4a8cfb0e22403e8682c3e6ff660256c4ecab527353b77c354",
-    "tests/static.test.mjs": "3ae540705fba9713a0dda877c50e2753cd6d9b94bccf5cba366d3b52d11b4133",
-    "tests/browser-test.mjs": "dda89276303020bf989a2f493ef4f86c3a0fa1aa23db645c16b36c4fe0ba08de",
+    "tests/static.test.mjs": "4021f3ad6a50f0ffbf9f7bb4644e9c273ea5963e573bdc91519ba74f731801c5",
+    "tests/browser-test.mjs": "8d0fe7732a36624b5cb683ea667f9099a5fd836f3791f49acebb7b30cf0ed3fd",
     "tools/oracle.py": "2fde5de1269c983a499939dff717ddb4291ca3a6a41048eba0a948dcd2e482f3",
     "tools/native/harness.py": "2515ddd2b78e8bc4af685aab3247974d94e2b0acdde43a3a89980b5dfdc5f17a",
     "tools/native/scribus_worker.py": "2f0f2a0d7c33b53be31f3ec6b66c4d98596abfb7810e50b26b6d956327703cb9",
-    ".github/workflows/verify.yml": "3508a91769be716500d5232c11d7f22b416813efd558f8e73829bd22663f4163",
-    "tests/async-inputs.test.mjs": "d0cd2f87b842dfd1b4e74354fb46bface77e492fcd74316cc4e8723dcd5e20c0"
+    ".github/workflows/verify.yml": "9cc85e38f4dd3c14c20a6ef60e6fe346ef4516f5fb1863116913bd9812895743",
+    "tests/async-inputs.test.mjs": "d0cd2f87b842dfd1b4e74354fb46bface77e492fcd74316cc4e8723dcd5e20c0",
+    "web/messages.mjs": "7fafa769010f05382f536dba1291b05f495d9c603b658d0120fb334f0a9e0782",
+    "tests/localization.test.mjs": "b9bc692b941a553eb00674d5a6178245a1f6fec969732cf05704aa139365dd7b"
   },
   "independentSourceReview": "incomplete",
-  "reportedFunctionalRepair": "Detach caller-owned data before async digest; apply the validated snapshot; recheck output run text and eligibility"
+  "reportedFunctionalRepair": "Detach caller-owned data before async digest; apply the validated snapshot; recheck output run text and eligibility",
+  "hostedBaseline": {
+    "commit": "e4628478bf4ccbba9ccbbfee198c1dbc0683bff5",
+    "run": "https://github.com/Masanori-Spec/frame-return/actions/runs/37220146519",
+    "jobs": 5,
+    "nodeGroups": 53,
+    "oracleTests": 42,
+    "harnessTests": 11,
+    "browserCases": 16,
+    "nativeShortAndLong": "passed",
+    "followupRevision": "rerun pending"
+  }
 }

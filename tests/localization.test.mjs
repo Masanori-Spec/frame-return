@@ -1,0 +1,5 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {makeNotice,noticeText,reasonText} from '../web/messages.mjs';
+test('an existing success or error notice retains both languages for a later switch',()=>{for(const error of [false,true]){const notice=makeNotice('依頼パケットを作成しました。','Review packet created.',error);assert.equal(noticeText(notice,'en'),'Review packet created.');assert.equal(noticeText(notice,'ja'),'依頼パケットを作成しました。');assert.equal(notice.error,error);}assert.equal(noticeText(null,'ja'),'');});
+test('observed stale wording conflict and other ordinary return conflicts have Japanese detail',()=>{for(const reason of ['Current wording differs from the complete baseline','Frame is missing or renamed','Frame name is duplicated','Run or paragraph boundaries changed','Already applied or current text equals this return; prepare a fresh packet']){assert.equal(reasonText(reason,'en'),reason);assert.match(reasonText(reason,'ja'),/[\u3040-\u30ff\u4e00-\u9fff]/);assert.notEqual(reasonText(reason,'ja'),reason);}});
